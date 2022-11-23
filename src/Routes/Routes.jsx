@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
+import DashboardLayout from '../Layout/DashboardLayout'
 import Frontend from '../Layout/Frontend'
 import Dashboard from '../Pages/Dashboard/Dashboard/Dashboard'
 import ErrorPage from '../Pages/ErrorPage/ErrorPage'
@@ -35,7 +36,7 @@ export const router = createBrowserRouter([
         path: '/dashboard',
         element: (
             <PrivateRoute>
-                <Dashboard />
+                <DashboardLayout />
             </PrivateRoute>
         ),
         errorElement: <ErrorPage />,

@@ -56,7 +56,7 @@ const Login = () => {
                                     {loginError && <p className='text-red-600 text-sm text-center mb-5' role="alert">{ loginError }</p>}
                                 </form>
                                 <a href="#0" className="mb-2 inline-block text-base text-[#adadad] hover:text-theme-2nd hover:underline"> Forget Password? </a>
-                                <p className="text-base text-[#adadad] mb-5"> New to Doctors Portal? <Link to="/register" className="text-theme-2nd hover:underline"> Create new account </Link>
+                                <p className="text-base text-[#adadad] mb-5"> New to Doctors Portal? <Link to="/register" className="text-theme-primary hover:underline"> Create new account </Link>
                                 </p>
                                 <div className="text-center border-b border-[#CFCFCF] leading-[0px] mb-5">
                                     <span className="leading-[0px] p-2 font-semibold tracking-wide text-theme-3rd text-base uppercase bg-white">Or</span>

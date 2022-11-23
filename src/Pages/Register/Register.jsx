@@ -99,7 +99,7 @@ const Register = () => {
                                     </div>
                                     {registerError && <p className='text-red-600 text-sm text-center mb-5' role="alert">{ registerError }</p>}
                                 </form>
-                                <p className="text-base text-[#adadad] mb-5"> Already have an account? <Link to="/login" className="text-theme-2nd hover:underline"> Login </Link>
+                                <p className="text-base text-[#adadad] mb-5"> Already have an account? <Link to="/login" className="text-theme-primary hover:underline"> Login </Link>
                                 </p>
                                 <div className="text-center border-b border-[#CFCFCF] leading-[0px] mb-5">
                                     <span className="leading-[0px] p-2 font-semibold tracking-wide text-theme-3rd text-base uppercase bg-white">Or</span>
