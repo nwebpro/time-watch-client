@@ -2,7 +2,7 @@ import React from 'react';
 
 const Button = ({ btnText, classes }) => {
     return (
-        <button className={`rounded-[5px] bg-indigo-500 text-white leading-6 text-base ${ classes }`}>{ btnText }</button>
+        <button className={`rounded-[5px] bg-theme-primary text-white leading-6 text-base ${ classes }`}>{ btnText }</button>
     );
 };
 

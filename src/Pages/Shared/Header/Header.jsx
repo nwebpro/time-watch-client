@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import Button from '../../../Components/Button/Button';
+import { SlUser } from 'react-icons/sl'
+import logo from '../../../assets/image/logo.png'
 
 const menuItems = [
     {
@@ -21,16 +22,16 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return (
-        <header className='py-3'>
+        <header className='py-5'>
             <div className="px-4 mx-auto container">
                 <div className="relative flex items-center justify-between">
                     <Link
                         to="/"
-                        aria-label="Jerin's Parlour"
-                        title="Jerin's Parlour"
+                        aria-label="Time"
+                        title="Time"
                         className="inline-flex items-center"
                     >
-                        Watch
+                        <img src={ logo } alt="" />
                     </Link>
                     <ul className="items-center hidden space-x-8 lg:flex">
                         {
@@ -42,8 +43,8 @@ const Header = () => {
                                         title={ item.title }
                                         className={({ isActive }) =>
                                             isActive
-                                            ? 'text-sm font-semibold tracking-wide text-[#474747]'
-                                            : 'text-sm font-normal tracking-wide text-[#474747]'
+                                            ? 'text-base tracking-wide text-theme-primary transition-colors duration-200'
+                                            : 'text-base tracking-wide text-theme-text hover:text-theme-primary'
                                         }
                                     >
                                         { item.title }
@@ -52,8 +53,8 @@ const Header = () => {
                             ))
                         }
                         <li>
-                            <Link to='/login'>
-                                <Button btnText={'Login'} classes={'py-3 px-[46px]'} />
+                            <Link to='/login' className='flex gap-2 items-center text-base text-theme-text hover:text-theme-primary transition-colors duration-200'>
+                                <SlUser /> <span>Login or Register</span>
                             </Link>
                         </li>
                     </ul>
@@ -86,11 +87,11 @@ const Header = () => {
                                     <div>
                                         <Link
                                             to="/"
-                                            aria-label="Jerin's Parlour"
-                                            title="Jerin's Parlour"
+                                            aria-label="Time"
+                                            title="Time"
                                             className="inline-flex items-center"
-                                        >
-                                            Watch
+                                        > 
+                                            <img src={ logo } alt="" />
                                         </Link>
                                     </div>
                                     <div>
@@ -120,8 +121,8 @@ const Header = () => {
                                                         title={ item.title }
                                                         className={({ isActive }) =>
                                                             isActive
-                                                            ? 'text-sm font-semibold tracking-wide text-[#474747]'
-                                                            : 'text-sm font-normal tracking-wide text-[#474747]'
+                                                            ? 'text-base tracking-wide text-theme-primary transition-colors duration-200'
+                                                            : 'text-base tracking-wide text-theme-text hover:text-theme-primary'
                                                         }
                                                     >
                                                         { item.title }
@@ -130,8 +131,8 @@ const Header = () => {
                                             ))
                                         }
                                         <li>
-                                            <Link to='/login'>
-                                                <Button btnText={'Login'} classes={'py-3 px-[46px]'} />
+                                            <Link to='/login' className='flex gap-2 items-center text-base text-theme-text hover:text-theme-primary transition-colors duration-200'>
+                                                <SlUser /> <span>Login or Register</span>
                                             </Link>
                                         </li>
                                     </ul>
