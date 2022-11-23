@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { SlUser } from 'react-icons/sl'
+import { CiLogin } from 'react-icons/ci'
 import logo from '../../../assets/image/logo.png'
+import { useContext } from 'react'
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider'
 
 const menuItems = [
     {
@@ -20,6 +23,7 @@ const menuItems = [
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const { user } = useContext(AuthContext)
 
     return (
         <header className='py-5'>
@@ -52,11 +56,20 @@ const Header = () => {
                                 </li>
                             ))
                         }
-                        <li>
-                            <Link to='/login' className='flex gap-2 items-center text-base text-theme-text hover:text-theme-primary transition-colors duration-200'>
-                                <SlUser /> <span>Login or Register</span>
-                            </Link>
-                        </li>
+                        {
+                            user.uid ?
+                            <li>
+                                <Link to='/login' className='flex gap-2 items-center text-base text-theme-text hover:text-theme-primary transition-colors duration-200'>
+                                    <CiLogin /> <span>Logout</span>
+                                </Link>
+                            </li>
+                            :
+                            <li>
+                                <Link to='/login' className='flex gap-2 items-center text-base text-theme-text hover:text-theme-primary transition-colors duration-200'>
+                                    <SlUser /> <span>Login or Register</span>
+                                </Link>
+                            </li>
+                        }
                     </ul>
                     <div className="lg:hidden">
                         <button
