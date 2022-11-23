@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { SlUser } from 'react-icons/sl'
 import { CiLogin } from 'react-icons/ci'
 import logo from '../../../assets/image/logo.png'
 import { useContext } from 'react'
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider'
+import { toast } from 'react-toastify'
 
 const menuItems = [
     {
@@ -23,7 +24,19 @@ const menuItems = [
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const { user } = useContext(AuthContext)
+    const { user, userLogout } = useContext(AuthContext)
+    const navigate = useNavigate()
+
+    const handleUserLogout = () => {
+        userLogout()
+        .then(() => {
+            navigate('/')
+            toast.warning('User Logout Successfully!', { autoClose: 400 })
+        })
+        .catch(error => {
+            toast.error(error.message, { autoClose: 400 })
+        })
+    }
 
     return (
         <header className='py-5'>
@@ -57,9 +70,9 @@ const Header = () => {
                             ))
                         }
                         {
-                            user.uid ?
+                            user?.uid ?
                             <li>
-                                <Link to='/login' className='flex gap-2 items-center text-base text-theme-text hover:text-theme-primary transition-colors duration-200'>
+                                <Link to='/login' onClick={handleUserLogout} className='flex gap-2 items-center text-base text-theme-text hover:text-theme-primary transition-colors duration-200'>
                                     <CiLogin /> <span>Logout</span>
                                 </Link>
                             </li>
@@ -143,11 +156,20 @@ const Header = () => {
                                                 </li>
                                             ))
                                         }
-                                        <li>
-                                            <Link to='/login' className='flex gap-2 items-center text-base text-theme-text hover:text-theme-primary transition-colors duration-200'>
-                                                <SlUser /> <span>Login or Register</span>
-                                            </Link>
-                                        </li>
+                                        {
+                                            user?.uid ?
+                                            <li>
+                                                <Link to='/login' onClick={handleUserLogout} className='flex gap-2 items-center text-base text-theme-text hover:text-theme-primary transition-colors duration-200'>
+                                                    <CiLogin /> <span>Logout</span>
+                                                </Link>
+                                            </li>
+                                            :
+                                            <li>
+                                                <Link to='/login' className='flex gap-2 items-center text-base text-theme-text hover:text-theme-primary transition-colors duration-200'>
+                                                    <SlUser /> <span>Login or Register</span>
+                                                </Link>
+                                            </li>
+                                        }
                                     </ul>
                                 </nav>
                             </div>
