@@ -17,18 +17,13 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { userLogin, loading, setLoading } = useContext(AuthContext)
     const [loginError, setLoginError ] = useState('')
-    const [loginUserEmail, setLoginUserEmail] = useState('')
-
-    // if(token) {
-    //     navigate(from, { replace: true })
-    // }
 
     const handleLogin = data => {
         setLoginError('')
         userLogin(data.email, data.password)
         .then(result => {
-            setLoginUserEmail(data.email)
             toast.success('User Login Successfully!', { autoClose: 400 })
+            navigate(from, { replace: true })
             setLoading(false)
         })
         .catch(error => {

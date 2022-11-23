@@ -17,6 +17,10 @@ const menuItems = [
         title: 'Products'
     },
     {
+        path: 'blog',
+        title: 'Blog'
+    },
+    {
         path: 'contact-us',
         title: 'Contact Us'
     }
@@ -51,6 +55,19 @@ const Header = () => {
                         <img src={ logo } alt="" />
                     </Link>
                     <ul className="items-center hidden space-x-8 lg:flex">
+                        {
+                            user?.uid &&
+                            <li>
+                                <Link 
+                                    to='/dashboard'
+                                    aria-label='Dashboard'
+                                    title='Dashboard'
+                                    className='text-base tracking-wide text-theme-text hover:text-theme-primary'
+                                >
+                                    Dashboard
+                                </Link>
+                            </li>
+                        }
                         {
                             menuItems.map(item => (
                                 <li key={item.path}>
@@ -138,6 +155,19 @@ const Header = () => {
                                 </div>
                                 <nav>
                                     <ul className="space-y-4">
+                                        {
+                                            user?.uid &&
+                                            <li>
+                                                <Link 
+                                                    to='/dashboard'
+                                                    aria-label='Dashboard'
+                                                    title='Dashboard'
+                                                    className='text-base tracking-wide text-theme-text hover:text-theme-primary'
+                                                >
+                                                    Dashboard
+                                                </Link>
+                                            </li>
+                                        }
                                         {
                                             menuItems.map(item => (
                                                 <li key={item.path}>
