@@ -33,6 +33,7 @@ const Register = () => {
                 createUser(data.email, data.password)
                 .then(result => {
                     handleUpdateUser(data.name, imgData.data.url)
+                    saveUserInfo(data.name, data.email, data.role, imgData.data.url)
                     toast.success('User Create Successfully!', { autoClose: 400 })
                     navigate('/')
                 })
@@ -45,6 +46,7 @@ const Register = () => {
         
     }
 
+    // User update information 
     const handleUpdateUser = (name, photoURL) => {
         updateUserInfo({ displayName: name, photoURL: photoURL })
             .then(() => {
@@ -55,6 +57,24 @@ const Register = () => {
             })
     }
     
+    // Save user info in database
+    const saveUserInfo = (name, email, role, image) => {
+        const user = {
+            name,
+            email,
+            role,
+            image
+        }
+        fetch(`${ process.env.REACT_APP_API_URL }/users`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {})
+    }
 
     
 
@@ -77,10 +97,10 @@ const Register = () => {
                                         <input type="email" {...register("email", {required: true})} placeholder="Email" className="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-theme-2nd focus-visible:shadow-none" />
                                         {errors.email && <p className='text-red-600 text-xs text-left' role="alert">{errors.email?.message}</p>}
                                     </div>
-                                    <div className="mb-6" {...register("role", {required: true})}>
-                                        <select className="select select-bordered w-full" >
-                                            <option defaultValue='buyer'>Buyer</option>
-                                            <option defaultValue='seller'>Seller</option>
+                                    <div className="mb-6">
+                                        <select className="select select-bordered w-full" {...register("role", {required: true})} >
+                                            <option value='buyer'>Buyer</option>
+                                            <option value='seller'>Seller</option>
                                         </select>
                                     </div>
                                     <div className="mb-6">

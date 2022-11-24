@@ -12,6 +12,7 @@ const SocialLogin = () => {
     const handleGoogleSignin = () => {
         signInWithGoogle()
             .then(result => {
+                saveUserInfo(result.user.displayName, result.user.email, result.user.photoURL)
                 navigate(from, { replace: true })
                 toast.success('Successfully Google Login', { autoClose: 400 })
             })
@@ -19,6 +20,27 @@ const SocialLogin = () => {
                 toast.error(error.message, { autoClose: 400 })
             })
     }
+
+    // Save user info in database
+    const saveUserInfo = (name, email, image) => {
+        const user = {
+            name,
+            email,
+            role: 'buyer',
+            image
+        }
+        console.log(user)
+        fetch(`${ process.env.REACT_APP_API_URL }/users`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {})
+    }
+
 
     return (
         <ul className="-mx-2 mb-12 flex justify-between">
