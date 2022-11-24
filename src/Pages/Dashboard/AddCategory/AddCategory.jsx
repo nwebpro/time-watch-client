@@ -25,7 +25,7 @@ const AddCategory = () => {
         .then(res => res.json())
         .then(data => {
             toast.success(data.message, { autoClose: 400 })
-            navigate('/dashboard/my-product')
+            navigate('/dashboard/all-category')
         })
     }
 

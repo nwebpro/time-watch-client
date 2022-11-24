@@ -25,7 +25,6 @@ const AddProduct = () => {
     })
     
     const allCategory = category.data
-    console.log(allCategory)
 
     if(isLoading) {
         return <LoadingSpinner />
@@ -59,6 +58,7 @@ const AddProduct = () => {
                     userEmail: user?.email,
                     userImage: user?.photoURL
                 }
+
                 // Save doctor information to tha database
                 fetch(`${ process.env.REACT_APP_API_URL }/products`, {
                     method: "POST",

@@ -7,6 +7,7 @@ import useSetTitle from '../../Hooks/useSetTitle';
 import { toast } from 'react-toastify';
 import Button from '../../Components/Button/Button'
 import SmallSpinner from '../../Components/Spinner/SmallSpinner'
+import useToken from '../../Hooks/useToken';
 
 
 const Login = () => {
@@ -17,13 +18,19 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { userLogin, loading, setLoading } = useContext(AuthContext)
     const [loginError, setLoginError ] = useState('')
+    const [loginUserEmail, setLoginUserEmail] = useState('')
+    const [token] = useToken(loginUserEmail)
+
+    if(token) {
+        navigate(from, { replace: true })
+    }
 
     const handleLogin = data => {
         setLoginError('')
         userLogin(data.email, data.password)
         .then(result => {
+            setLoginUserEmail(data.email)
             toast.success('User Login Successfully!', { autoClose: 400 })
-            navigate(from, { replace: true })
             setLoading(false)
         })
         .catch(error => {

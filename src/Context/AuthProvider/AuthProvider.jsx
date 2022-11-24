@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
 
     const userLogout = () => {
         setLoading(true)
-        localStorage.removeItem('doctorsPortalAccessToken')
+        localStorage.removeItem('timeWatchAccessToken')
         return signOut(auth)
     }
 

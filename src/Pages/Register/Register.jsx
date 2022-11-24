@@ -7,6 +7,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 import useSetTitle from '../../Hooks/useSetTitle';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
+import useToken from '../../Hooks/useToken';
 
 
 const Register = () => {
@@ -14,8 +15,14 @@ const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser, updateUserInfo, loading, setLoading } = useContext(AuthContext)
     const [registerError, setRegisterError] = useState('')
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail)
     const navigate = useNavigate()
     const imageUploadApiKey = process.env.REACT_APP_IMGBB_API_KEY
+
+    if(token){
+        navigate('/')
+    }
 
     const handleUserRegister = data => {
         setRegisterError('')
@@ -35,14 +42,16 @@ const Register = () => {
                     handleUpdateUser(data.name, imgData.data.url)
                     saveUserInfo(data.name, data.email, data.role, imgData.data.url)
                     toast.success('User Create Successfully!', { autoClose: 400 })
-                    navigate('/')
+                    setLoading(false)
                 })
                 .catch(error => {
                     setRegisterError(error.message)
                 })
             }
         })
-
+        .catch(error => {
+            setRegisterError(error.message)
+        })
         
     }
 
@@ -73,7 +82,9 @@ const Register = () => {
             body: JSON.stringify(user)
         })
         .then(res => res.json())
-        .then(data => {})
+        .then(data => {
+            setCreatedUserEmail(email)
+        })
     }
 
     

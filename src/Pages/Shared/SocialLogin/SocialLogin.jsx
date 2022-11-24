@@ -1,19 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify'
+import useToken from '../../../Hooks/useToken';
 
 const SocialLogin = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
     const { signInWithGoogle } = useContext(AuthContext)
+    const [createdSocialEmail, setCreatedSocialEmail] = useState('')
+    const [token] = useToken(createdSocialEmail)
+
+    if(token){
+        navigate(from, { replace: true })
+    }
 
     const handleGoogleSignin = () => {
         signInWithGoogle()
             .then(result => {
+                setCreatedSocialEmail(result?.user?.email)
                 saveUserInfo(result.user.displayName, result.user.email, result.user.photoURL)
-                navigate(from, { replace: true })
                 toast.success('Successfully Google Login', { autoClose: 400 })
             })
             .catch(error => {
