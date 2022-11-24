@@ -23,10 +23,10 @@ const Footer = () => {
                                 <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/'>Home</Link>
                             </li>
                             <li>
-                                <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/services'>Services</Link>
+                                <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/'>Services</Link>
                             </li>
                             <li>
-                                <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/contact'>Contact</Link>
+                                <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/contact-us'>Contact</Link>
                             </li>
                         </ul>
                     </div>
@@ -34,10 +34,7 @@ const Footer = () => {
                         <h3 className='mb-6 lg:mb-10 text-semibold text-xl leading-6'>Company</h3>
                         <ul>
                             <li>
-                                <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/'>Why Car Doctor</Link>
-                            </li>
-                            <li>
-                                <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/about'>About</Link>
+                                <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/'>About</Link>
                             </li>
                             <li>
                                 <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/dashboard'>Dashboard</Link>
@@ -51,10 +48,10 @@ const Footer = () => {
                                 <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/'>Support Center</Link>
                             </li>
                             <li>
-                                <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/services'>Feedback</Link>
+                                <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/'>Feedback</Link>
                             </li>
                             <li>
-                                <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/contact'>Accessability</Link>
+                                <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/contact-us'>Accessability</Link>
                             </li>
                         </ul>
                     </div>

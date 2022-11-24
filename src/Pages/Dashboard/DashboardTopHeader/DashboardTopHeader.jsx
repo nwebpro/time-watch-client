@@ -1,9 +1,9 @@
 import React from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi'
 
-const DashboardTopHeader = ({ setOpenSidebar, openSidebar }) => {
+const DashboardTopHeader = () => {
     return (
-        <header className='bg-white px-10 py-4'>
+        <header className='bg-white px-10 py-4 sticky top-0'>
             <div className='flex justify-between items-center'>
                 <fieldset className="w-full space-y-1 text-gray-100">
                     <label for="Search" className="hidden">Search</label>
@@ -18,9 +18,9 @@ const DashboardTopHeader = ({ setOpenSidebar, openSidebar }) => {
                         <input type="search" name="Search" placeholder="Search..." className="border border-gray-200 lg:w-5/12 py-2 pl-10 pr-5 focus:outline-none text-theme-text" autocomplete="off" />
                     </div>
                 </fieldset>
-                <div>
-                    <GiHamburgerMenu onClick={() => setOpenSidebar(!openSidebar)} className='text-xl cursor-pointer' />
-                </div>
+                <label htmlFor="dashboardDrawer" className="cursor-pointer block lg:hidden">
+                    <GiHamburgerMenu className='text-xl cursor-pointer' />
+                </label>
             </div>
         </header>
     );

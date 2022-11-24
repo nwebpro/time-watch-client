@@ -5,12 +5,11 @@ import { MdDashboard } from 'react-icons/md'
 import { AiFillHome } from 'react-icons/ai'
 import { FiFile } from 'react-icons/fi'
 import { FiLogOut } from 'react-icons/fi'
+import { MdVerified } from 'react-icons/md'
 import { toast } from 'react-toastify';
 import DashboardTopHeader from '../Pages/Dashboard/DashboardTopHeader/DashboardTopHeader';
-import { useState } from 'react';
 
 const DashboardLayout = () => {
-    const [openSidebar, setOpenSidebar] = useState(true)
     const { user, userLogout } = useContext(AuthContext)
     const navigate = useNavigate()
 
@@ -26,15 +25,31 @@ const DashboardLayout = () => {
     }
     return (
         <>
-            <div className='grid grid-cols-1 lg:grid-cols-7'>
-                    <div className={`${ openSidebar ? 'block' : 'hidden' } col-span-2 lg:col-span-1 bg-[#111827] h-screen flex flex-col justify-between`}>
-                        <div className="flex flex-col items-center mt-6 -mx-2 border-b border-theme-body pb-5">
+            <div className='drawer drawer-mobile'>
+                <input id="dashboardDrawer" type="checkbox" className="drawer-toggle" />
+                <div className={`drawer-content bg-gray-200 overflow-hidden`}>
+                    <DashboardTopHeader />
+                    <ScrollRestoration />
+                    <Outlet />
+                </div>
+
+                <div className={`drawer-side`}>
+                    <label htmlFor="dashboardDrawer" className="drawer-overlay"></label> 
+                    <div className={`menu w-72 text-base-content bg-[#111827] h-screen flex flex-col justify-between duration-300`}>
+                        <div className={`flex flex-col items-center mt-6 border-b border-theme-body pb-5 duration-300`}>
                             <img className="object-cover w-16 h-16 mx-2 rounded-full" src={ user?.photoURL } alt="avatar" />
-                            <h4 className="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200 hover:underline">{ user?.displayName }</h4>
-                            <p className="mx-2 mt-1 text-sm font-medium text-gray-400 hover:underline">{ user?.email }</p>
+                            <h4 className="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200 flex gap-1 items-center">{ user?.displayName }
+                                <div className="tooltip" data-tip="Unverified">
+                                    <MdVerified className='text-gray-400' />
+                                </div>
+                                {/* <div className="tooltip" data-tip="Verified">
+                                    <MdVerified className='text-[#3F8DF3]' />
+                                </div> */}
+                            </h4>
+                            <p className="mx-2 mt-1 text-sm font-medium text-gray-400">{ user?.email }</p>
                         </div>
 
-                        <div className="flex flex-col justify-between flex-1 mt-6">
+                        <div className={`flex flex-col justify-between flex-1 mt-6`}>
                             <nav>
                                 <ul>
                                     <li>
@@ -42,8 +57,8 @@ const DashboardLayout = () => {
                                             to="/home"
                                             className='flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
                                         >
-                                            <AiFillHome />
-                                            <span className="mx-4">Home</span>
+                                            <AiFillHome className='duration-500 cursor-pointer' />
+                                            <span className={`mx-4 duration-300`}>Home</span>
                                         </Link>
                                     </li>
                                     <li>
@@ -101,7 +116,7 @@ const DashboardLayout = () => {
                                 </ul>
                             </nav>
                         </div>
-                        <div className='border-t border-theme-body'>
+                        <div className={`border-t border-theme-body`}>
                             <button onClick={handleUserLogout}
                                 className='flex w-full items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
                             >
@@ -110,12 +125,8 @@ const DashboardLayout = () => {
                             </button>
                         </div>
                     </div>
-                
-                <div className={`${openSidebar ? 'col-span-6' : 'col-span-full'} bg-gray-200`}>
-                    <DashboardTopHeader setOpenSidebar={ setOpenSidebar } openSidebar={ openSidebar } />
-                    <ScrollRestoration />
-                    <Outlet />
                 </div>
+                
             </div>
         </>
     );
