@@ -1,9 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import useSetTitle from '../../Hooks/useSetTitle';
 import LoadingSpinner from '../../Pages/Shared/LoadingSpinner/LoadingSpinner'
 import Product from './Product';
 
 const Products = () => {
+    useSetTitle('Products')
     const { data:products = [], isLoading } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
@@ -12,7 +14,6 @@ const Products = () => {
             return data
         }
     })
-    
     const allProducts = products.data
 
     if(isLoading) {

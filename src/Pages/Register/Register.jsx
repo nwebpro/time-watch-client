@@ -98,7 +98,7 @@ const Register = () => {
                                         {errors.email && <p className='text-red-600 text-xs text-left' role="alert">{errors.email?.message}</p>}
                                     </div>
                                     <div className="mb-6">
-                                        <select className="select select-bordered w-full" {...register("role", {required: true})} >
+                                        <select className="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-theme-2nd focus-visible:shadow-none" {...register("role", {required: true})} >
                                             <option value='buyer'>Buyer</option>
                                             <option value='seller'>Seller</option>
                                         </select>

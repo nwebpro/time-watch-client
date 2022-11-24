@@ -5,6 +5,8 @@ import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import useSetTitle from '../../../Hooks/useSetTitle';
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { useQuery } from '@tanstack/react-query';
+import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
 
 const AddProduct = () => {
     useSetTitle('Add Product')
@@ -12,7 +14,22 @@ const AddProduct = () => {
     const { user } = useContext(AuthContext)
     const { register, formState: { errors }, handleSubmit } = useForm();
     const imageUploadApiKey = process.env.REACT_APP_IMGBB_API_KEY
+    
+    const { data:category = [], isLoading } = useQuery({
+        queryKey: ['category'],
+        queryFn: async () => {
+            const res = await fetch(`${ process.env.REACT_APP_API_URL }/category`)
+            const data = await res.json()
+            return data
+        }
+    })
+    
+    const allCategory = category.data
+    console.log(allCategory)
 
+    if(isLoading) {
+        return <LoadingSpinner />
+    }
 
     const handleAddProduct = data => {
         const image = data.image[0]
@@ -77,9 +94,11 @@ const AddProduct = () => {
                     <div className="mb-6">
                         <label  className="block text-sm font-medium text-theme-text mb-1">Product Category</label>
                         <select className="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-theme-2nd focus-visible:shadow-none" {...register("catName", {required: true})} >
-                            <option value='rolex'>Rolex</option>
-                            <option value='omega'>Omega</option>
-                            <option value='tudor'>Tudor</option>
+                            {
+                                allCategory.map(category => (
+                                    <option key={category._id} value={ category.name }>{ category.name }</option>
+                                ))
+                            }
                         </select>
                     </div>
                     <div className="mb-6" >

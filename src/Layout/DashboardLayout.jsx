@@ -115,6 +115,32 @@ const DashboardLayout = () => {
                                             <span>Add Product</span>
                                         </NavLink>
                                     </li>
+                                    <li>
+                                        <NavLink 
+                                            to="/dashboard/all-category"
+                                            className={({ isActive }) =>
+                                            isActive
+                                                ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
+                                                : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
+                                            }
+                                        >
+                                            <FiFile className='text-xl' />
+                                            <span>All Category</span>
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink 
+                                            to="/dashboard/add/category"
+                                            className={({ isActive }) =>
+                                            isActive
+                                                ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
+                                                : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
+                                            }
+                                        >
+                                            <FiFile className='text-xl' />
+                                            <span>Add Category</span>
+                                        </NavLink>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
