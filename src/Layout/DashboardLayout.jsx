@@ -8,9 +8,15 @@ import { FiLogOut } from 'react-icons/fi'
 import { MdVerified } from 'react-icons/md'
 import { toast } from 'react-toastify';
 import DashboardTopHeader from '../Pages/Dashboard/DashboardTopHeader/DashboardTopHeader';
+import useAdmin from '../Hooks/useAdmin';
+import useBuyer from '../Hooks/useBuyer';
+import useSeller from '../Hooks/useSeller';
 
 const DashboardLayout = () => {
     const { user, userLogout } = useContext(AuthContext)
+    const [isAdmin] = useAdmin(user?.email)
+    const [isBuyer] = useBuyer(user?.email)
+    const [isSeller] = useSeller(user?.email)
     const navigate = useNavigate()
 
     const handleUserLogout = () => {
@@ -76,71 +82,77 @@ const DashboardLayout = () => {
                                             <span>Dashboard</span>
                                         </NavLink>
                                     </li>
-                                    <li>
-                                        <NavLink 
-                                            to="/my-buyer"
-                                            className={({ isActive }) =>
-                                            isActive
-                                                ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
-                                                : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
-                                            }
-                                        >
-                                            <MdDashboard className='text-xl' />
-                                            <span>My Buyer</span>
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink 
-                                            to="/dashboard/my-product"
-                                            className={({ isActive }) =>
-                                            isActive
-                                                ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
-                                                : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
-                                            }
-                                        >
-                                            <FiFile className='text-xl' />
-                                            <span>My Products</span>
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink 
-                                            to="/dashboard/add/product"
-                                            className={({ isActive }) =>
-                                            isActive
-                                                ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
-                                                : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
-                                            }
-                                        >
-                                            <FiFile className='text-xl' />
-                                            <span>Add Product</span>
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink 
-                                            to="/dashboard/all-category"
-                                            className={({ isActive }) =>
-                                            isActive
-                                                ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
-                                                : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
-                                            }
-                                        >
-                                            <FiFile className='text-xl' />
-                                            <span>All Category</span>
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink 
-                                            to="/dashboard/add/category"
-                                            className={({ isActive }) =>
-                                            isActive
-                                                ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
-                                                : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
-                                            }
-                                        >
-                                            <FiFile className='text-xl' />
-                                            <span>Add Category</span>
-                                        </NavLink>
-                                    </li>
+                                    {
+                                        isAdmin && 
+                                        <>
+                                            <li>
+                                                <NavLink 
+                                                    to="/my-buyer"
+                                                    className={({ isActive }) =>
+                                                    isActive
+                                                        ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
+                                                        : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
+                                                    }
+                                                >
+                                                    <MdDashboard className='text-xl' />
+                                                    <span>My Buyer</span>
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink 
+                                                    to="/dashboard/my-product"
+                                                    className={({ isActive }) =>
+                                                    isActive
+                                                        ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
+                                                        : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
+                                                    }
+                                                >
+                                                    <FiFile className='text-xl' />
+                                                    <span>My Products</span>
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink 
+                                                    to="/dashboard/add/product"
+                                                    className={({ isActive }) =>
+                                                    isActive
+                                                        ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
+                                                        : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
+                                                    }
+                                                >
+                                                    <FiFile className='text-xl' />
+                                                    <span>Add Product</span>
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink 
+                                                    to="/dashboard/all-category"
+                                                    className={({ isActive }) =>
+                                                    isActive
+                                                        ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
+                                                        : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
+                                                    }
+                                                >
+                                                    <FiFile className='text-xl' />
+                                                    <span>All Category</span>
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink 
+                                                    to="/dashboard/add/category"
+                                                    className={({ isActive }) =>
+                                                    isActive
+                                                        ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
+                                                        : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
+                                                    }
+                                                >
+                                                    <FiFile className='text-xl' />
+                                                    <span>Add Category</span>
+                                                </NavLink>
+                                            </li> 
+                                        </>
+                                    }
+                                    
                                 </ul>
                             </nav>
                         </div>

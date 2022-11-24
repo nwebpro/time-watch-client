@@ -76,7 +76,6 @@ const AddProduct = () => {
         })
     }
 
-
     return (
         <section className='max-w-3xl mx-auto bg-white px-8 py-10 rounded-lg'>
             <form onSubmit={ handleSubmit(handleAddProduct) }>
