@@ -9,13 +9,11 @@ import { MdVerified } from 'react-icons/md'
 import { toast } from 'react-toastify';
 import DashboardTopHeader from '../Pages/Dashboard/DashboardTopHeader/DashboardTopHeader';
 import useAdmin from '../Hooks/useAdmin';
-import useBuyer from '../Hooks/useBuyer';
 import useSeller from '../Hooks/useSeller';
 
 const DashboardLayout = () => {
     const { user, userLogout } = useContext(AuthContext)
     const [isAdmin] = useAdmin(user?.email)
-    const [isBuyer] = useBuyer(user?.email)
     const [isSeller] = useSeller(user?.email)
     const navigate = useNavigate()
 
@@ -87,6 +85,50 @@ const DashboardLayout = () => {
                                         <>
                                             <li>
                                                 <NavLink 
+                                                    to="/dashboard/all-sellers"
+                                                    className={({ isActive }) =>
+                                                    isActive
+                                                        ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
+                                                        : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
+                                                    }
+                                                >
+                                                    <MdDashboard className='text-xl' />
+                                                    <span>All Seller</span>
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink 
+                                                    to="/dashboard/all-buyers"
+                                                    className={({ isActive }) =>
+                                                    isActive
+                                                        ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
+                                                        : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
+                                                    }
+                                                >
+                                                    <MdDashboard className='text-xl' />
+                                                    <span>All Buyer</span>
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink 
+                                                    to="/dashboard/reported-items"
+                                                    className={({ isActive }) =>
+                                                    isActive
+                                                        ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
+                                                        : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
+                                                    }
+                                                >
+                                                    <MdDashboard className='text-xl' />
+                                                    <span>Reported Items</span>
+                                                </NavLink>
+                                            </li>
+                                        </>
+                                    }
+                                    {
+                                        isSeller &&
+                                        <>
+                                            <li>
+                                                <NavLink 
                                                     to="/my-buyer"
                                                     className={({ isActive }) =>
                                                     isActive
@@ -151,6 +193,22 @@ const DashboardLayout = () => {
                                                 </NavLink>
                                             </li> 
                                         </>
+                                    }
+                                    {
+                                        !isAdmin && !isSeller &&
+                                        <li>
+                                        <NavLink 
+                                            to="/dashboard/add/category"
+                                            className={({ isActive }) =>
+                                            isActive
+                                                ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
+                                                : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
+                                            }
+                                        >
+                                            <FiFile className='text-xl' />
+                                            <span>My Order</span>
+                                        </NavLink>
+                                    </li>
                                     }
                                     
                                 </ul>

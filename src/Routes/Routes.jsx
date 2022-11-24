@@ -3,6 +3,7 @@ import DashboardLayout from '../Layout/DashboardLayout'
 import Frontend from '../Layout/Frontend'
 import AddCategory from '../Pages/Dashboard/AddCategory/AddCategory'
 import AddProduct from '../Pages/Dashboard/AddProduct/AddProduct'
+import AllSellers from '../Pages/Dashboard/Admin/AllSellers/AllSellers'
 import AllCategory from '../Pages/Dashboard/AllCategory/AllCategory'
 import Dashboard from '../Pages/Dashboard/Dashboard/Dashboard'
 import MyProduct from '../Pages/Dashboard/MyProduct/MyProduct'
@@ -12,7 +13,10 @@ import Home from '../Pages/Home/Home/Home'
 import Login from '../Pages/Login/Login'
 import Products from '../Pages/Products/Products'
 import Register from '../Pages/Register/Register'
+import AdminRoute from './AdminRoute'
 import PrivateRoute from './PrivateRoute'
+import ReportedItems from '../Pages/Dashboard/Admin/ReportedItems/ReportedItems'
+import AllBuyersList from '../Pages/Dashboard/Admin/AllBuyersList/AllBuyersList'
 
 export const router = createBrowserRouter([
     {
@@ -79,6 +83,30 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/all-category',
                 element: <AllCategory />
+            },
+            {
+                path: '/dashboard/all-sellers',
+                element: ( 
+                    <AdminRoute>
+                        <AllSellers />
+                    </AdminRoute>
+                )
+            },
+            {
+                path: '/dashboard/all-buyers',
+                element: ( 
+                    <AdminRoute>
+                        <AllBuyersList />
+                    </AdminRoute>
+                )
+            },
+            {
+                path: '/dashboard/reported-items',
+                element: ( 
+                    <AdminRoute>
+                        <ReportedItems />
+                    </AdminRoute>
+                )
             }
         ]
     }
