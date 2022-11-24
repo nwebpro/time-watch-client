@@ -30,7 +30,9 @@ const DashboardLayout = () => {
                 <div className={`drawer-content bg-gray-200 overflow-hidden`}>
                     <DashboardTopHeader />
                     <ScrollRestoration />
-                    <Outlet />
+                    <div className='py-10 px-10 lg:px-20'>
+                        <Outlet />
+                    </div>
                 </div>
 
                 <div className={`drawer-side`}>
@@ -57,8 +59,8 @@ const DashboardLayout = () => {
                                             to="/home"
                                             className='flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
                                         >
-                                            <AiFillHome className='duration-500 cursor-pointer' />
-                                            <span className={`mx-4 duration-300`}>Home</span>
+                                            <AiFillHome className='text-xl' />
+                                            <span>Home</span>
                                         </Link>
                                     </li>
                                     <li>
@@ -70,8 +72,8 @@ const DashboardLayout = () => {
                                                 : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
                                             }
                                         >
-                                            <MdDashboard />
-                                            <span className="mx-4">Dashboard</span>
+                                            <MdDashboard className='text-xl' />
+                                            <span>Dashboard</span>
                                         </NavLink>
                                     </li>
                                     <li>
@@ -83,8 +85,8 @@ const DashboardLayout = () => {
                                                 : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
                                             }
                                         >
-                                            <MdDashboard />
-                                            <span className="mx-4">My Buyer</span>
+                                            <MdDashboard className='text-xl' />
+                                            <span>My Buyer</span>
                                         </NavLink>
                                     </li>
                                     <li>
@@ -96,21 +98,21 @@ const DashboardLayout = () => {
                                                 : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
                                             }
                                         >
-                                            <FiFile />
-                                            <span className="mx-4">My Products</span>
+                                            <FiFile className='text-xl' />
+                                            <span>My Products</span>
                                         </NavLink>
                                     </li>
                                     <li>
                                         <NavLink 
-                                            to="/dashboard/add-product"
+                                            to="/dashboard/add/product"
                                             className={({ isActive }) =>
                                             isActive
                                                 ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
                                                 : 'flex items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
                                             }
                                         >
-                                            <FiFile />
-                                            <span className="mx-4">Add Product</span>
+                                            <FiFile className='text-xl' />
+                                            <span>Add Product</span>
                                         </NavLink>
                                     </li>
                                 </ul>
@@ -120,8 +122,8 @@ const DashboardLayout = () => {
                             <button onClick={handleUserLogout}
                                 className='flex w-full items-center py-3 px-5 text-base tracking-wide text-gray-400 hover:text-gray-200 transition hover:bg-gray-800'
                             >
-                                <FiLogOut />
-                                <span className="mx-4">Logout</span>
+                                <FiLogOut className='text-xl' />
+                                <span className="ml-3">Logout</span>
                             </button>
                         </div>
                     </div>

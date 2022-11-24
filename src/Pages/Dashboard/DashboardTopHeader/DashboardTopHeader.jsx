@@ -6,7 +6,7 @@ const DashboardTopHeader = () => {
         <header className='bg-white px-10 py-4 sticky top-0'>
             <div className='flex justify-between items-center'>
                 <fieldset className="w-full space-y-1 text-gray-100">
-                    <label for="Search" className="hidden">Search</label>
+                    <label htmlFor="Search" className="hidden">Search</label>
                     <div className="relative">
                         <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                             <button type="button" title="search" className="p-1 focus:outline-none focus:ring">
@@ -15,7 +15,7 @@ const DashboardTopHeader = () => {
                                 </svg>
                             </button>
                         </span>
-                        <input type="search" name="Search" placeholder="Search..." className="border border-gray-200 lg:w-5/12 py-2 pl-10 pr-5 focus:outline-none text-theme-text" autocomplete="off" />
+                        <input type="search" name="Search" placeholder="Search..." className="border border-gray-200 lg:w-5/12 py-2 pl-10 pr-5 focus:outline-none text-theme-text" autoComplete="off" />
                     </div>
                 </fieldset>
                 <label htmlFor="dashboardDrawer" className="cursor-pointer block lg:hidden">
