@@ -17,6 +17,7 @@ import PrivateRoute from './PrivateRoute'
 import ReportedItems from '../Pages/Dashboard/Admin/ReportedItems/ReportedItems'
 import AllBuyersList from '../Pages/Dashboard/Admin/AllBuyersList/AllBuyersList'
 import Category from '../Pages/Home/Categories/Category'
+import MyOrder from '../Pages/Dashboard/Buyer/MyOrder/MyOrder'
 
 export const router = createBrowserRouter([
     {
@@ -87,6 +88,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/all-category',
                 element: <AllCategory />
+            },
+            {
+                path: '/dashboard/my-order',
+                element: <MyOrder />
             },
             {
                 path: '/dashboard/all-sellers',

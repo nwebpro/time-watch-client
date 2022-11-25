@@ -16,7 +16,7 @@ const ProductBookModal = ({ productData, setProductData }) => {
         const phone = form.phone.value
         const location = form.location.value
 
-        const productBooking = {
+        const ordersData = {
             name,
             email,
             productName,
@@ -25,12 +25,12 @@ const ProductBookModal = ({ productData, setProductData }) => {
             location,
             image
         }
-        fetch(`${ process.env.REACT_APP_API_URL }/product/bookings`, {
+        fetch(`${ process.env.REACT_APP_API_URL }/product/orders`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(productBooking)
+            body: JSON.stringify(ordersData)
         })
         .then(res => res.json())
         .then(data => {
