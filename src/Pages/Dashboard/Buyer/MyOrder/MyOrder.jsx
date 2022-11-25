@@ -12,7 +12,7 @@ const MyOrder = () => {
     const { data:orders = [], isLoading, refetch } = useQuery({
         queryKey: ['orders'],
         queryFn: async () => {
-            const res = await fetch(`${ process.env.REACT_APP_API_URL }/product/orders`)
+            const res = await fetch(`${ process.env.REACT_APP_API_URL }/orders`)
             const data = await res.json()
             return data
         }
@@ -28,7 +28,7 @@ const MyOrder = () => {
         setDeletedOrder(null)
     }
     const handleOrderDelete = orderId => {
-        fetch(`${ process.env.REACT_APP_API_URL }/product/orders/${ orderId }`, {
+        fetch(`${ process.env.REACT_APP_API_URL }/orders/${ orderId }`, {
             method: "DELETE",
         })
         .then(res => res.json())
@@ -70,7 +70,7 @@ const MyOrder = () => {
                                                 <p className="text-gray-900 whitespace-no-wrap">{ order.productName }</p>
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                <p className="text-gray-900 whitespace-no-wrap">Resale: ${ order.price }</p>
+                                                <p className="text-gray-900 whitespace-no-wrap">৳ { order.price }</p>
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                 {

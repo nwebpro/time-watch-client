@@ -13,7 +13,7 @@ const CheckoutForm = ({ orderData }) => {
     const stripe = useStripe()
     const elements = useElements()
     
-    const { _id, name, email, price } = orderData.data
+    const { _id, name, email, price, productId } = orderData.data
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
@@ -72,7 +72,8 @@ const CheckoutForm = ({ orderData }) => {
             price,
             transactionId: paymentIntent.id,
             email,
-            orderId: _id
+            orderId: _id,
+            productId
         }
 
         if(paymentIntent.status === "succeeded"){

@@ -6,7 +6,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const ProductBookModal = ({ productData, setProductData }) => {
     const { user, loading, setLoading } = useContext(AuthContext)
-    const {  name: productName, resalePrice, image } = productData
+    const {  _id, name: productName, resalePrice, image } = productData
 
     const handleBooking = e => {
         e.preventDefault();
@@ -20,12 +20,13 @@ const ProductBookModal = ({ productData, setProductData }) => {
             name,
             email,
             productName,
+            productId: _id,
             price: resalePrice,
             phone,
             location,
             image
         }
-        fetch(`${ process.env.REACT_APP_API_URL }/product/orders`, {
+        fetch(`${ process.env.REACT_APP_API_URL }/orders`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
