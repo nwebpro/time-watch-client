@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Product = ({ product, setProductData }) => {
+const CategoryProducts = ({ product, setProductData }) => {
     const { image, name, userName, location, originalPrice, resalePrice } = product
     return (
         <div className='bg-white'>
@@ -30,4 +30,4 @@ const Product = ({ product, setProductData }) => {
     );
 };
 
-export default Product;
+export default CategoryProducts;

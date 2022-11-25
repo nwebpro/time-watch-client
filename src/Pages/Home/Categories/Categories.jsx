@@ -14,7 +14,6 @@ const Categories = () => {
     })
     
     const allCategory = category.data
-    console.log(allCategory);
 
     if(isLoading) {
         return <LoadingSpinner />

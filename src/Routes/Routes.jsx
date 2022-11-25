@@ -8,7 +8,6 @@ import AllCategory from '../Pages/Dashboard/AllCategory/AllCategory'
 import Dashboard from '../Pages/Dashboard/Dashboard/Dashboard'
 import MyProduct from '../Pages/Dashboard/MyProduct/MyProduct'
 import ErrorPage from '../Pages/ErrorPage/ErrorPage'
-import Category from '../Pages/Home/Categories/Category'
 import Home from '../Pages/Home/Home/Home'
 import Login from '../Pages/Login/Login'
 import Products from '../Pages/Products/Products'
@@ -17,6 +16,7 @@ import AdminRoute from './AdminRoute'
 import PrivateRoute from './PrivateRoute'
 import ReportedItems from '../Pages/Dashboard/Admin/ReportedItems/ReportedItems'
 import AllBuyersList from '../Pages/Dashboard/Admin/AllBuyersList/AllBuyersList'
+import Category from '../Pages/Home/Categories/Category'
 
 export const router = createBrowserRouter([
     {
@@ -34,11 +34,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/products',
-                element: <Products />
+                element: (
+                    <PrivateRoute>
+                        <Products />
+                    </PrivateRoute>
+                )
             },
             {
                 path: '/category/:categoryId',
-                loader: ({ params }) => fetch(`${ process.env.REACT_APP_API_URL }/category/${ params.categoryId }`),
+                loader: ({ params }) => fetch(`${ process.env.REACT_APP_API_URL }/products/${ params.categoryId }`),
                 element: (
                     <PrivateRoute>
                         <Category />

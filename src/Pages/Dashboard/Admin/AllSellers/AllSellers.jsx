@@ -2,10 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useSetTitle from '../../../../Hooks/useSetTitle';
 import LoadingSpinner from '../../../Shared/LoadingSpinner/LoadingSpinner';
+import { toast } from 'react-toastify'
+import { useState } from 'react';
+import UserVerified from '../../UserVerified/UserVerified';
 
 const AllSellers = () => {
     useSetTitle('All Sellers')
-    const { data:sellers = [], isLoading } = useQuery({
+    const [statusUpdate, setStatusUpdate] = useState('')
+    const { data:sellers = [], isLoading, refetch} = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
             const res = await fetch(`${ process.env.REACT_APP_API_URL }/sellers`)
@@ -15,6 +19,20 @@ const AllSellers = () => {
     })
     
     const allSellersList = sellers.data
+
+    const handleUserVerified = () => {
+        fetch(`${ process.env.REACT_APP_API_URL }/users/status-update/${ statusUpdate }`, {
+            method: 'PUT',
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success) {
+                toast.success(data.message, { autoClose: 400 })
+                refetch()
+            }
+        })
+    }
+
 
     if(isLoading) {
         return <LoadingSpinner />
@@ -52,11 +70,19 @@ const AllSellers = () => {
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                 <p className="text-gray-900 whitespace-no-wrap">{ seller.email }</p>
                                             </td>
-                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm cursor-pointer">
-                                                <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                                    <span aria-hidden className="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                                    <span className="relative">Unverified</span>
-                                                </span>
+                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                {
+                                                    seller.status === 'Verified' ?
+                                                    <span className='bg-green-200 rounded-full py-1 px-2'>Verified</span>
+                                                    :
+                                                    <span className={`relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight cursor-pointer`} onClick={() => handleUserVerified(setStatusUpdate(seller._id))}>
+                                                        <span aria-hidden className={`absolute inset-0 bg-green-200 opacity-50 rounded-full`}></span>
+                                                        <span className="relative">{seller.status ? seller.status : 'Unverified'}</span>
+                                                    </span>
+                                                }
+                                            </td>
+                                            <td className='hidden'>
+                                                <UserVerified seller={ seller } />
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                 <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight cursor-pointer">
