@@ -74,10 +74,14 @@ const MyOrder = () => {
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                 {
-                                                    order.price && !order.pain &&
+                                                    order.price && !order.paid &&
                                                     <Link to={`/dashboard/payment/${ order._id }`}>
                                                         <button className='cursor-pointer bg-theme-primary py-1 px-3 text-xs text-white font-bold rounded-full'>Pay</button>
                                                     </Link>
+                                                }
+                                                {
+                                                    order.price && order.paid &&
+                                                    <span className='cursor-pointer bg-[#9bbd7f] py-1 px-3 text-xs text-white font-bold rounded-full'>Paid</span>
                                                 }
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">

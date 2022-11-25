@@ -18,6 +18,7 @@ import ReportedItems from '../Pages/Dashboard/Admin/ReportedItems/ReportedItems'
 import AllBuyersList from '../Pages/Dashboard/Admin/AllBuyersList/AllBuyersList'
 import Category from '../Pages/Home/Categories/Category'
 import MyOrder from '../Pages/Dashboard/Buyer/MyOrder/MyOrder'
+import Payment from '../Pages/Dashboard/Payment/Payment'
 
 export const router = createBrowserRouter([
     {
@@ -90,7 +91,7 @@ export const router = createBrowserRouter([
                 element: <AllCategory />
             },
             {
-                path: '/dashboard/my-order',
+                path: '/dashboard/my-orders',
                 element: <MyOrder />
             },
             {
@@ -100,6 +101,11 @@ export const router = createBrowserRouter([
                         <AllSellers />
                     </AdminRoute>
                 )
+            },
+            {
+                path: '/dashboard/payment/:orderId',
+                loader: ({ params }) => fetch(`${ process.env.REACT_APP_API_URL }/product/orders/${ params.orderId }`),
+                element: <Payment />
             },
             {
                 path: '/dashboard/all-buyers',

@@ -195,7 +195,7 @@ const DashboardLayout = () => {
                                         !isAdmin && !isSeller &&
                                         <li>
                                         <NavLink 
-                                            to="/dashboard/my-order"
+                                            to="/dashboard/my-orders"
                                             className={({ isActive }) =>
                                             isActive
                                                 ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'
