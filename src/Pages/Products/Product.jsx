@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdVerified, MdLocationPin, MdOutlineReport } from 'react-icons/md'
-const Product = ({ product, setProductData }) => {
+const Product = ({ product, setProductData, setReportProduct }) => {
     const { image, name, userName, location, originalPrice, resalePrice, yearOfUses, status } = product
     return (
         <div className='bg-white p-5 flex flex-col justify-between rounded-sm'>
@@ -64,9 +64,14 @@ const Product = ({ product, setProductData }) => {
                         ></path>
                         </svg>
                     </button>
-                    <div className='border p-1 cursor-pointer rounded-full border-gray-300 text-theme-primary hover:bg-theme-primary hover:border-theme-primary hover:text-white transition-all duration-200 delay-100 tooltip' data-tip="Report">
+                    <label 
+                        htmlFor="reportProduct-modal"
+                        className='border p-1 cursor-pointer rounded-full border-gray-300 text-theme-primary hover:bg-theme-primary hover:border-theme-primary hover:text-white transition-all duration-200 delay-100 tooltip' 
+                        data-tip="Report"
+                        onClick={() => setReportProduct(product)}
+                    >
                         <MdOutlineReport />
-                    </div>
+                    </label>
                 </div>
             </div>
         </div>

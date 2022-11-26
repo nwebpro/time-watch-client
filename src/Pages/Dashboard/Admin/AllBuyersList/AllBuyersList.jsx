@@ -24,7 +24,7 @@ const AllBuyersList = () => {
         <section className="px-4 sm:px-8">
             <div className="py-8">
                 <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                    <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
+                    <div className="inline-block min-w-full rounded-lg overflow-hidden">
                         <table className="min-w-full leading-normal">
                             <thead>
                                 <tr>

@@ -21,6 +21,7 @@ import MyOrder from '../Pages/Dashboard/Buyer/MyOrder/MyOrder'
 import Payment from '../Pages/Dashboard/Payment/Payment'
 import MyAllBuyers from '../Pages/Dashboard/MyAllBuyers/MyAllBuyers'
 import ContactUs from '../Pages/ContactUs/ContactUs'
+import Blog from '../Pages/Blog/Blog'
 
 export const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
                         <Category />
                     </PrivateRoute>
                 )
+            },
+            {
+                path: '/blog',
+                element: <Blog />
             },
             {
                 path: '/contact-us',

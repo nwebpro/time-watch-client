@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Product from '../../Products/Product';
 import ProductBookModal from '../../Products/ProductBookModal';
+import ReportProductModal from '../../Products/ReportProductModal';
 
 const Category = () => {
     const [productData, setProductData] = useState(null)
+    const [reportProduct, setReportProduct] = useState([])
     const categoriesData = useLoaderData()
     return (
         <section className='bg-theme-secondary px-4 md:px-0 py-20'>
@@ -22,6 +24,13 @@ const Category = () => {
                 <ProductBookModal 
                     productData={productData}
                     setProductData={setProductData}
+                />
+            }
+            {
+                reportProduct &&
+                <ReportProductModal 
+                    reportProduct={reportProduct}
+                    setReportProduct={setReportProduct}
                 />
             }
         </section>

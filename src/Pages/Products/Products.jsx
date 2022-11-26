@@ -1,25 +1,29 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import axios from 'axios'
+import React, { useContext } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import useSetTitle from '../../Hooks/useSetTitle';
 import LoadingSpinner from '../../Pages/Shared/LoadingSpinner/LoadingSpinner'
 import Product from './Product';
 import ProductBookModal from './ProductBookModal';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import ReportProductModal from './ReportProductModal';
 
 const Products = () => {
     useSetTitle('Products')
+    const {loading} = useContext(AuthContext)
     const [productData, setProductData] = useState(null)
-    const { data:products = [], isLoading } = useQuery({
-        queryKey: ['products'],
-        queryFn: async () => {
-            const res = await fetch(`${ process.env.REACT_APP_API_URL }/all-products`)
-            const data = await res.json()
-            return data
-        }
-    })
-    const allProducts = products.data
+    const [reportProduct, setReportProduct] = useState([])
+    const [allProducts, setAllProducts] = useState([])
 
-    if(isLoading) {
+    useEffect(() => {
+        axios.get(`${ process.env.REACT_APP_API_URL }/all-products`)
+            .then(res => {
+                setAllProducts(res.data.data)
+            })
+    }, [])
+
+    if(loading) {
         return <LoadingSpinner />
     }
     
@@ -29,7 +33,12 @@ const Products = () => {
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                     {
                         allProducts?.map(product => (
-                            <Product key={ product._id } product={ product } setProductData={setProductData} />
+                            <Product 
+                                key={ product._id } 
+                                product={ product } 
+                                setProductData={setProductData}
+                                setReportProduct={setReportProduct}
+                            />
                         ))
                     }
                 </div>
@@ -39,6 +48,13 @@ const Products = () => {
                 <ProductBookModal 
                     productData={productData}
                     setProductData={setProductData}
+                />
+            }
+            {
+                reportProduct &&
+                <ReportProductModal 
+                    reportProduct={reportProduct}
+                    setReportProduct={setReportProduct}
                 />
             }
         </section>
