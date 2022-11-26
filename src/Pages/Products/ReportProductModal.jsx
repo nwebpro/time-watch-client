@@ -20,6 +20,7 @@ const ReportProductModal = ({ reportProduct, setReportProduct }) => {
             userName: user?.displayName,
             userEmail: user?.email
         }
+        
         fetch(`${ process.env.REACT_APP_API_URL }/reports`, {
             method: "POST",
             headers: {

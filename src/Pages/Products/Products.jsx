@@ -26,6 +26,7 @@ const Products = () => {
     if(loading) {
         return <LoadingSpinner />
     }
+    console.log(reportProduct)
     
     return (
         <section className='bg-theme-secondary px-4 md:px-0 py-20'>

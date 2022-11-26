@@ -18,6 +18,7 @@ const ReportedItems = () => {
     })
     
     const reportProducts = reportedProducts.data
+    console.log(reportProducts);
 
     if(isLoading) {
         return <LoadingSpinner />
@@ -26,8 +27,9 @@ const ReportedItems = () => {
     const closeModal = () => {
         setDeletedReportedProducts(null)
     }
-    const handleReportedProductDelete = productId => {
-        fetch(`${ process.env.REACT_APP_API_URL }/reports/${ productId }`, {
+    const handleReportedProductDelete = report => {
+        
+        fetch(`${ process.env.REACT_APP_API_URL }/reports/${ report }`, {
             method: "DELETE",
         })
         .then(res => res.json())
