@@ -19,6 +19,8 @@ import AllBuyersList from '../Pages/Dashboard/Admin/AllBuyersList/AllBuyersList'
 import Category from '../Pages/Home/Categories/Category'
 import MyOrder from '../Pages/Dashboard/Buyer/MyOrder/MyOrder'
 import Payment from '../Pages/Dashboard/Payment/Payment'
+import MyAllBuyers from '../Pages/Dashboard/MyAllBuyers/MyAllBuyers'
+import ContactUs from '../Pages/ContactUs/ContactUs'
 
 export const router = createBrowserRouter([
     {
@@ -52,6 +54,10 @@ export const router = createBrowserRouter([
                 )
             },
             {
+                path: '/contact-us',
+                element: <ContactUs />
+            },
+            {
                 path: '/login',
                 element: <Login />
             },
@@ -73,6 +79,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <Dashboard />
+            },
+            {
+                path: '/dashboard/my-buyers',
+                element: <MyAllBuyers />
             },
             {
                 path: '/dashboard/add/product',

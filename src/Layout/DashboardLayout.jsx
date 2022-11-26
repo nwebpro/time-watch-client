@@ -126,7 +126,7 @@ const DashboardLayout = () => {
                                         <>
                                             <li>
                                                 <NavLink 
-                                                    to="/my-buyer"
+                                                    to="/dashboard/my-buyers"
                                                     className={({ isActive }) =>
                                                     isActive
                                                         ? 'flex items-center py-3 px-5 text-base tracking-wide bg-[#1F2937] text-theme-secondary transition-colors duration-200'

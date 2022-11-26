@@ -65,7 +65,10 @@ const AllSellers = () => {
                                                 </div>
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                <p className="text-gray-900 whitespace-no-wrap capitalize">{ seller.name }</p>
+                                                <div className='flex items-center gap-[2px]'>
+                                                    <p className="text-gray-900 whitespace-no-wrap capitalize">{ seller.name }</p>
+                                                    <UserVerified seller={ seller } />
+                                                </div>
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                 <p className="text-gray-900 whitespace-no-wrap">{ seller.email }</p>
@@ -80,9 +83,6 @@ const AllSellers = () => {
                                                         <span className="relative">{seller.status ? seller.status : 'Unverified'}</span>
                                                     </span>
                                                 }
-                                            </td>
-                                            <td className='hidden'>
-                                                <UserVerified seller={ seller } />
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                 <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight cursor-pointer">

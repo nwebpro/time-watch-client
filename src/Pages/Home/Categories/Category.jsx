@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Product from '../../Products/Product';
 import ProductBookModal from '../../Products/ProductBookModal';
-import CategoryProducts from './CategoryProducts';
 
 const Category = () => {
     const [productData, setProductData] = useState(null)
@@ -12,7 +12,7 @@ const Category = () => {
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                     {
                         categoriesData?.data?.map(product => (
-                            <CategoryProducts key={ product._id } product={ product } setProductData={setProductData} />
+                            <Product key={ product._id } product={ product } setProductData={setProductData} />
                         ))
                     }
                 </div>
