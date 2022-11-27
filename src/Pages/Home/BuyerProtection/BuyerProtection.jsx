@@ -29,7 +29,7 @@ const BuyerProtection = () => {
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                     {
                         buyerProtection.map((item, i) => (
-                            <div key={ i } className='text-center flex flex-col items-center border border-gray-200 py-8 px-3 rounded-lg' data-aos='fade-up' data-aos-duration='1500'>
+                            <div key={ i } className='text-center flex flex-col items-center border border-gray-200 py-8 px-3 rounded-lg' data-aos='fade-up' data-aos-duration='1000'>
                                 <img className='mb-3' src={ item.image } alt="" />
                                 <h3 className='font-semibold text-xl leading-8 mb-2'>{ item.name }</h3>
                                 <p className='text-base text-theme-body'>{ item.details }</p>

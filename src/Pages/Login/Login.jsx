@@ -44,7 +44,7 @@ const Login = () => {
                 <div className="container mx-auto px-[21px]">
                     <div className="-mx-4 flex flex-wrap">
                         <div className="w-full px-4">
-                            <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white shadow-box-shadow py-16 px-10 text-center sm:px-12 md:px-[60px]" data-aos='zoom-in' data-aos-duration='1500'>
+                            <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white shadow-box-shadow py-16 px-10 text-center sm:px-12 md:px-[60px]" data-aos='zoom-in' data-aos-duration='1000'>
                                 <div className="mb-10 text-center md:mb-16">
                                     <h2 className='text-4xl font-bold'>Login</h2>
                                 </div>

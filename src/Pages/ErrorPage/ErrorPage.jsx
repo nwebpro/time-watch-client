@@ -6,7 +6,7 @@ const ErrorPage = () => {
     return (
         <section className="flex items-center h-screen p-16">
             <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
-                <div className="text-center" data-aos='zoom-in' data-aos-duration='1500'>
+                <div className="text-center" data-aos='zoom-in' data-aos-duration='1000'>
                     <img src={ errorpage } alt="" className='mb-b-50' />
                     <Link rel="noopener noreferrer" to="/" className="px-8 py-3 font-semibold rounded bg-theme-primary text-white">Back to Homepage</Link>
                 </div>

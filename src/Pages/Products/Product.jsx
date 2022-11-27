@@ -16,7 +16,7 @@ const Product = ({ product, setProductData, setReportProduct }) => {
         { includeSeconds: true }
     )
     return (
-        <div className='bg-white p-5 flex flex-col justify-between rounded-sm' data-aos='fade-up' data-aos-duration='1500'>
+        <div className='bg-white p-5 flex flex-col justify-between rounded-sm' data-aos='fade-up' data-aos-duration='1000'>
             <div className='relative mb-5'>
                 <div className='group block overflow-hidden mb-5 cursor-pointer'>
                     <img src={ image } className='h-[300px] w-full object-cover transition-transform duration-500 group-hover:scale-105 z-10' alt="" />

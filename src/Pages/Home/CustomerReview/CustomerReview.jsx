@@ -37,7 +37,7 @@ const CustomerReview = () => {
                         }}
                         modules={[Autoplay, Pagination]}
                         className="mySwiper"
-                        data-aos='fade-up' data-aos-duration='1500'
+                        data-aos='fade-up' data-aos-duration='1000'
                     >
                         {
                             [...Array(3)].map((_, i) => (

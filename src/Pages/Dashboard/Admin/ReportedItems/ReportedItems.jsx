@@ -54,7 +54,7 @@ const ReportedItems = () => {
                     <div className="inline-block min-w-full rounded-lg overflow-hidden">
                         {
                             reportProducts.length ?
-                            <table className="min-w-full leading-normal" data-aos='fade-up' data-aos-duration='1500'>
+                            <table className="min-w-full leading-normal" data-aos='fade-up' data-aos-duration='1000'>
                                 <thead>
                                     <tr>
                                         <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"> Image </th>

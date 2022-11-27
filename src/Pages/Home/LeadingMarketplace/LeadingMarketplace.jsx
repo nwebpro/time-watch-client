@@ -35,7 +35,7 @@ const LeadingMarketplace = () => {
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                     {
                         leadingMarket.map((item, i) => (
-                            <div key={ i } className='flex flex-col items-center text-center hover:shadow-shadow transition duration-200 py-8 px-5 rounded-lg' data-aos='fade-up' data-aos-duration='1500'>
+                            <div key={ i } className='flex flex-col items-center text-center hover:shadow-shadow transition duration-200 py-8 px-5 rounded-lg' data-aos='fade-up' data-aos-duration='1000'>
                                 <img className='mb-5 w-20' src={ item.image } alt="" />
                                 <h3 className='text-xl font-semibold mb-1 leading-8'>{ item.name }</h3>
                                 <p className='text-base text-theme-body'>{ item.details }</p>
