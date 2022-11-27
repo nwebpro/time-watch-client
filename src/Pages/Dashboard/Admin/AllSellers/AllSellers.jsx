@@ -3,12 +3,10 @@ import React from 'react';
 import useSetTitle from '../../../../Hooks/useSetTitle';
 import LoadingSpinner from '../../../Shared/LoadingSpinner/LoadingSpinner';
 import { toast } from 'react-toastify'
-import { useState } from 'react';
 import UserVerified from '../../UserVerified/UserVerified';
 
 const AllSellers = () => {
     useSetTitle('All Sellers')
-    const [statusUpdate, setStatusUpdate] = useState('')
     const { data:sellers = [], isLoading, refetch} = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
@@ -20,8 +18,8 @@ const AllSellers = () => {
     
     const allSellersList = sellers.data
 
-    const handleUserVerified = () => {
-        fetch(`${ process.env.REACT_APP_API_URL }/users/status-update/${ statusUpdate }`, {
+    const handleUserVerified = email => {
+        fetch(`${ process.env.REACT_APP_API_URL }/users/status-update/${ email }`, {
             method: 'PUT',
         })
         .then(res => res.json())
@@ -75,12 +73,12 @@ const AllSellers = () => {
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                 {
-                                                    seller.status === 'Verified' ?
+                                                    seller.verify === true ?
                                                     <span className='bg-green-200 rounded-full py-1 px-2'>Verified</span>
                                                     :
-                                                    <span className={`relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight cursor-pointer`} onClick={() => handleUserVerified(setStatusUpdate(seller._id))}>
+                                                    <span className={`relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight`} onClick={() => handleUserVerified(seller.email)}>
                                                         <span aria-hidden className={`absolute inset-0 bg-green-200 opacity-50 rounded-full`}></span>
-                                                        <span className="relative">{seller.status ? seller.status : 'Unverified'}</span>
+                                                        <span className="relative">{seller.verify ? 'Verified' : 'Unverified'}</span>
                                                     </span>
                                                 }
                                             </td>

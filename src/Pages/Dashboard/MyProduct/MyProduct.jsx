@@ -26,6 +26,22 @@ const MyProduct = () => {
         return <LoadingSpinner />
     }
 
+    const handleAdvertised = product => {
+        fetch(`${ process.env.REACT_APP_API_URL }/makeAdvertise/${ product._id }`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success) {
+                toast.success(data.message, { autoClose: 400 })
+                refetch()
+            }
+        })
+    }
+
     const closeModal = () => {
         setDeletedProduct(null)
     }
@@ -92,8 +108,11 @@ const MyProduct = () => {
                                                 </td>
                                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-center">
                                                     {
-                                                        product.status === 'sold' ||
-                                                        <span className="cursor-pointer bg-theme-primary py-1 px-3 text-xs text-white font-bold rounded-full">Advertised</span>
+                                                        product.status ? '' : 
+                                                        product.isAdvertise ? 
+                                                        <span className="py-1 px-3 text-xs text-theme-primary font-bold rounded-full">Advertise On</span>
+                                                        :
+                                                        <span onClick={() => handleAdvertised(product)} className="cursor-pointer bg-theme-primary py-1 px-3 text-xs text-white font-bold rounded-full" >Advertise</span>
                                                     }
                                                 </td>
                                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-center">

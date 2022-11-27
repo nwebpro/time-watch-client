@@ -1,20 +1,20 @@
 import React from 'react';
 import { MdVerified, MdLocationPin, MdOutlineReport } from 'react-icons/md'
 const Product = ({ product, setProductData, setReportProduct }) => {
-    const { image, name, userName, location, originalPrice, resalePrice, yearOfUses, status } = product
+    const { image, name, userName, location, categoryName, originalPrice, resalePrice, yearOfUses, status, verify } = product
     return (
         <div className='bg-white p-5 flex flex-col justify-between rounded-sm'>
-            <div className='relative'>
+            <div className='relative mb-5'>
                 <div className='group block overflow-hidden mb-5 cursor-pointer'>
                     <img src={ image } className='h-[300px] w-full object-cover transition-transform duration-500 group-hover:scale-105 z-10' alt="" />
                     <div className={`capitalize absolute bg-theme-primary top-0 right-0 py-1 px-2 text-xs text-white rounded-full ${status === 'sold' ? 'block' : 'hidden'}`}>{ status }</div>
                 </div>
                 <h3 className='text-theme-text font-poppins font-semibold text-lg leading-6 mb-1'>{ name }</h3>
-                <div className='flex justify-between items-center mb-4'>
+                <div className='flex justify-between items-center'>
                     <div className='text-sm hover:underline text-gray-400 flex items-center gap-[2px]'>
                         { userName }
-                        <div className="tooltip" data-tip="Unverified">
-                            <MdVerified className='text-gray-400' />
+                        <div className="tooltip" data-tip={`${verify ? 'Verified' : 'Unverified'}`}>
+                            <MdVerified className={`${verify ? 'text-[#3F8DF3]' : 'text-gray-400'}`} />
                         </div>
                     </div>
                     <div className='text-sm text-theme-body flex items-center gap-[2px]'>
@@ -22,11 +22,12 @@ const Product = ({ product, setProductData, setReportProduct }) => {
                         { location }
                     </div>
                 </div>
+                <p className='text-gray-400 b-5 text-sm mb-5'>Brand: {categoryName}</p>
                 <div className='flex items-end gap-1 justify-start'>
                     <p className='text-theme-primary text-lg leading-4 font-medium mb-2'>৳ { resalePrice }</p>
                     <p className='text-gray-400 line-through text-xs leading-4 font-medium mb-1'>৳ { originalPrice }</p>
                 </div>
-                <p className='capitalize text-gray-400 text-[13px] mb-5'>Uses: { yearOfUses }</p>
+                <p className='capitalize text-gray-400 text-[13px]'>Uses: { yearOfUses }</p>
             </div>
             <div className='flex justify-between items-center'>
                 {

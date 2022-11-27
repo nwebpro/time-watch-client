@@ -36,7 +36,6 @@ const SocialLogin = () => {
             role: 'buyer',
             image
         }
-        console.log(user)
         fetch(`${ process.env.REACT_APP_API_URL }/users`, {
             method: "POST",
             headers: {

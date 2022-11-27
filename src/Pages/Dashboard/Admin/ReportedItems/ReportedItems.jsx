@@ -91,7 +91,7 @@ const ReportedItems = () => {
                                 </tbody>
                             </table>
                             :
-                            <div className='w-full text-center h-[300px] lg:h-[500px] flex items-center justify-center text-4xl text-gray-300'>You currently have no orders.</div>
+                            <div className='w-full text-center h-[300px] lg:h-[500px] flex items-center justify-center text-4xl text-gray-300'>No data available.</div>
                         }
                     </div>
                 </div>
