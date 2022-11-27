@@ -31,7 +31,7 @@ const Advertisements = () => {
                     <div className='container mx-auto'>
                         <h2 className="text-center font-poppins text-theme-text font-bold text-4xl leading-10 mb-[72px]">Advertisement Products</h2>
                         {
-                            advertisedList?.length === 4 ?
+                            advertisedList?.length >= 4 ?
                             <Swiper
                                 breakpoints={{
                                     576: {

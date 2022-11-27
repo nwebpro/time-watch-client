@@ -15,7 +15,11 @@ const MyOrder = () => {
     const { data:orders = [], isLoading, refetch } = useQuery({
         queryKey: ['orders'],
         queryFn: async () => {
-            const res = await fetch(`${ process.env.REACT_APP_API_URL }/orders?email=${ user?.email }`)
+            const res = await fetch(`${ process.env.REACT_APP_API_URL }/orders?email=${ user?.email }`, {
+                headers: {
+                    authorization: `Bearer ${ localStorage.getItem('timeWatchAccessToken') }`
+                }
+            })
             const data = await res.json()
             return data
         }
@@ -34,6 +38,9 @@ const MyOrder = () => {
     const handleOrderDelete = orderId => {
         fetch(`${ process.env.REACT_APP_API_URL }/orders/${ orderId }`, {
             method: "DELETE",
+            headers: {
+                authorization: `Bearer ${ localStorage.getItem('timeWatchAccessToken') }`
+            }
         })
         .then(res => res.json())
         .then(data => {

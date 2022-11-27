@@ -6,7 +6,7 @@ const Advertisement = ({ product }) => {
 
     return (
         <Link to='/products'>
-            <div className='bg-white p-5 flex flex-col justify-between rounded-md'>
+            <div className='bg-white p-5 flex flex-col justify-between rounded-md min-h-[420px]'>
                 <div className='relative'>
                     <div className='group block overflow-hidden mb-5 cursor-pointer'>
                         <img src={ image } className='h-[300px] w-full object-cover transition-transform duration-500 group-hover:scale-105 z-10' alt="" />

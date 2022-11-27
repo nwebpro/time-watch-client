@@ -29,6 +29,9 @@ const AllCategory = () => {
     const handleCategoryDelete = categoryId => {
         fetch(`${ process.env.REACT_APP_API_URL }/category/${ categoryId }`, {
             method: "DELETE",
+            headers: {
+                authorization: `Bearer ${ localStorage.getItem('timeWatchAccessToken') }`
+            }
         })
         .then(res => res.json())
         .then(data => {
@@ -54,7 +57,7 @@ const AllCategory = () => {
                             <tbody>
                                 {
                                     allCategory.map(category => (
-                                        <tr>
+                                        <tr key={category._id}>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                 <p className="text-gray-900 whitespace-no-wrap">{ category.name }</p>
                                             </td>

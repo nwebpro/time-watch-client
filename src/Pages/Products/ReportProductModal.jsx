@@ -24,7 +24,8 @@ const ReportProductModal = ({ reportProduct, setReportProduct }) => {
         fetch(`${ process.env.REACT_APP_API_URL }/reports`, {
             method: "POST",
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${ localStorage.getItem('timeWatchAccessToken') }`
             },
             body: JSON.stringify(reportProductData)
         })
@@ -39,7 +40,6 @@ const ReportProductModal = ({ reportProduct, setReportProduct }) => {
             }
         })
     }
-
 
     return (
         <>

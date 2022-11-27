@@ -9,11 +9,13 @@ import { toast } from 'react-toastify';
 import DashboardTopHeader from '../Pages/Dashboard/DashboardTopHeader/DashboardTopHeader';
 import useAdmin from '../Hooks/useAdmin';
 import useSeller from '../Hooks/useSeller';
+import useBuyer from '../Hooks/useBuyer';
 
 const DashboardLayout = () => {
     const { user, userLogout } = useContext(AuthContext)
     const [isAdmin] = useAdmin(user?.email)
     const [isSeller] = useSeller(user?.email)
+    const [isBuyer] = useBuyer(user?.email)
     const navigate = useNavigate()
 
     const handleUserLogout = () => {
@@ -192,7 +194,7 @@ const DashboardLayout = () => {
                                         </>
                                     }
                                     {
-                                        !isAdmin && !isSeller &&
+                                        isBuyer &&
                                         <li>
                                         <NavLink 
                                             to="/dashboard/my-orders"

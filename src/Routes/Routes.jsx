@@ -47,7 +47,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/category/:categoryId',
-                loader: ({ params }) => fetch(`${ process.env.REACT_APP_API_URL }/products/${ params.categoryId }`),
+                loader: ({ params }) => fetch(`${ process.env.REACT_APP_API_URL }/products/${ params.categoryId }`, {
+                    headers: {
+                        authorization: `Bearer ${ localStorage.getItem('timeWatchAccessToken') }`
+                    }
+                }),
                 element: (
                     <PrivateRoute>
                         <Category />
@@ -119,7 +123,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/payment/:orderId',
-                loader: ({ params }) => fetch(`${ process.env.REACT_APP_API_URL }/orders/${ params.orderId }`),
+                loader: ({ params }) => fetch(`${ process.env.REACT_APP_API_URL }/orders/${ params.orderId }`, {
+                    headers: {
+                        authorization: `Bearer ${ localStorage.getItem('timeWatchAccessToken') }`
+                    }
+                }),
                 element: <Payment />
             },
             {

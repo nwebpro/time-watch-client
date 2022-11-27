@@ -18,7 +18,11 @@ const AddProduct = () => {
     const { data:category = [], isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
-            const res = await fetch(`${ process.env.REACT_APP_API_URL }/category`)
+            const res = await fetch(`${ process.env.REACT_APP_API_URL }/category`, {
+                headers: {
+                    authorization: `Bearer ${ localStorage.getItem('timeWatchAccessToken') }`
+                }
+            })
             const data = await res.json()
             return data
         }
@@ -63,7 +67,8 @@ const AddProduct = () => {
                 fetch(`${ process.env.REACT_APP_API_URL }/products`, {
                     method: "POST",
                     headers: {
-                        'content-type': 'application/json'
+                        'content-type': 'application/json',
+                        authorization: `Bearer ${ localStorage.getItem('timeWatchAccessToken') }`,
                     },
                     body: JSON.stringify(addProduct)
                 })

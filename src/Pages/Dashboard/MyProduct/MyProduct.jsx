@@ -14,7 +14,11 @@ const MyProduct = () => {
     const { data:products = [], isLoading, refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await fetch(`${ process.env.REACT_APP_API_URL }/products?email=${user?.email}`)
+            const res = await fetch(`${ process.env.REACT_APP_API_URL }/products?email=${user?.email}`, {
+                headers: {
+                    authorization: `Bearer ${ localStorage.getItem('timeWatchAccessToken') }`
+                }
+            })
             const data = await res.json()
             return data
         }
@@ -30,7 +34,8 @@ const MyProduct = () => {
         fetch(`${ process.env.REACT_APP_API_URL }/makeAdvertise/${ product._id }`, {
             method: "PUT",
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${ localStorage.getItem('timeWatchAccessToken') }`
             }
         })
         .then(res => res.json())
@@ -48,6 +53,9 @@ const MyProduct = () => {
     const handleProductDelete = productId => {
         fetch(`${ process.env.REACT_APP_API_URL }/products/${ productId }`, {
             method: "DELETE",
+            headers: {
+                authorization: `Bearer ${ localStorage.getItem('timeWatchAccessToken') }`
+            }
         })
         .then(res => res.json())
         .then(data => {

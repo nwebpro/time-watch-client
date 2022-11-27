@@ -15,7 +15,11 @@ const Products = () => {
     const [allProducts, setAllProducts] = useState([])
 
     useEffect(() => {
-        axios.get(`${ process.env.REACT_APP_API_URL }/all-products`)
+        axios.get(`${ process.env.REACT_APP_API_URL }/all-products`, {
+            headers: {
+                authorization: `Bearer ${ localStorage.getItem('timeWatchAccessToken') }`
+            }
+        })
             .then(res => {
                 setAllProducts(res.data.data)
             })

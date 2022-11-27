@@ -11,14 +11,17 @@ const ReportedItems = () => {
     const { data:reportedProducts = [], isLoading, refetch } = useQuery({
         queryKey: ['reportedProducts'],
         queryFn: async () => {
-            const res = await fetch(`${ process.env.REACT_APP_API_URL }/reports`)
+            const res = await fetch(`${ process.env.REACT_APP_API_URL }/reports`, {
+                headers: {
+                    authorization: `Bearer ${ localStorage.getItem('timeWatchAccessToken') }`,
+                }
+            })
             const data = await res.json()
             return data
         }
     })
     
     const reportProducts = reportedProducts.data
-    console.log(reportProducts);
 
     if(isLoading) {
         return <LoadingSpinner />
@@ -31,6 +34,9 @@ const ReportedItems = () => {
         
         fetch(`${ process.env.REACT_APP_API_URL }/reports/${ report }`, {
             method: "DELETE",
+            headers: {
+                authorization: `Bearer ${ localStorage.getItem('timeWatchAccessToken') }`,
+            }
         })
         .then(res => res.json())
         .then(data => {
@@ -55,7 +61,7 @@ const ReportedItems = () => {
                                         <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"> Name </th>
                                         <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"> Email </th>
                                         <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"> Message</th>
-                                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"> Action</th>
+                                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider"> Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -1,6 +1,13 @@
 import React from 'react';
+import { useContext } from 'react';
 import { MdVerified, MdLocationPin, MdOutlineReport } from 'react-icons/md'
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import useAdmin from '../../Hooks/useAdmin';
+import useSeller from '../../Hooks/useSeller';
 const Product = ({ product, setProductData, setReportProduct }) => {
+    const { user } = useContext(AuthContext)
+    const [ isAdmin ] = useAdmin(user?.email)
+    const [ isSeller ] = useSeller(user?.email)
     const { image, name, userName, location, categoryName, originalPrice, resalePrice, yearOfUses, isAdvertise, verify } = product
     return (
         <div className='bg-white p-5 flex flex-col justify-between rounded-sm'>
@@ -30,16 +37,26 @@ const Product = ({ product, setProductData, setReportProduct }) => {
                 <p className='capitalize text-gray-400 text-[13px]'>Uses: { yearOfUses }</p>
             </div>
             <div className='flex justify-between items-center'>
-                <label 
-                    htmlFor="booking-modal" 
-                    onClick={() => {setProductData(product)}} 
-                    className="cursor-pointer flex text-xs border px-3 my-auto py-2 border-theme-primary group hover:bg-theme-primary rounded-xs transition-all duration-200"
-                >
-                    <div className="text-xs text-theme-primary font-semibold ml-2
-                        group-hover:text-white delay-100">
+                {
+                    !isAdmin && !isSeller ?
+                    <label 
+                        htmlFor="booking-modal" 
+                        onClick={() => {setProductData(product)}} 
+                        className="cursor-pointer flex text-xs border px-3 my-auto py-2 border-theme-primary group hover:bg-theme-primary rounded-xs transition-all duration-200"
+                    >
+                        <div className="text-xs text-theme-primary font-semibold ml-2
+                            group-hover:text-white delay-100">
+                            Book Now
+                        </div>
+                    </label>
+                    :
+                    <button 
+                        disabled
+                        className="text-xs px-3 my-auto py-2 bg-theme-body text-white"
+                    >
                         Book Now
-                    </div>
-                </label>
+                    </button>
+                }
                 <div className='flex items-center gap-2 text-xl'>
                     <button
                         type="button"
