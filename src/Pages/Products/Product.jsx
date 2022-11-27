@@ -1,13 +1,13 @@
 import React from 'react';
 import { MdVerified, MdLocationPin, MdOutlineReport } from 'react-icons/md'
 const Product = ({ product, setProductData, setReportProduct }) => {
-    const { image, name, userName, location, categoryName, originalPrice, resalePrice, yearOfUses, status, verify } = product
+    const { image, name, userName, location, categoryName, originalPrice, resalePrice, yearOfUses, isAdvertise, verify } = product
     return (
         <div className='bg-white p-5 flex flex-col justify-between rounded-sm'>
             <div className='relative mb-5'>
                 <div className='group block overflow-hidden mb-5 cursor-pointer'>
                     <img src={ image } className='h-[300px] w-full object-cover transition-transform duration-500 group-hover:scale-105 z-10' alt="" />
-                    <div className={`capitalize absolute bg-theme-primary top-0 right-0 py-1 px-2 text-xs text-white rounded-full ${status === 'sold' ? 'block' : 'hidden'}`}>{ status }</div>
+                    <div className={`capitalize absolute bg-theme-primary top-2 right-3 py-1 px-2 text-xs text-white rounded-full`}>{ isAdvertise ? 'Advertise' : 'Sale'  }</div>
                 </div>
                 <h3 className='text-theme-text font-poppins font-semibold text-lg leading-6 mb-1'>{ name }</h3>
                 <div className='flex justify-between items-center'>
@@ -30,19 +30,16 @@ const Product = ({ product, setProductData, setReportProduct }) => {
                 <p className='capitalize text-gray-400 text-[13px]'>Uses: { yearOfUses }</p>
             </div>
             <div className='flex justify-between items-center'>
-                {
-                    status !== 'sold' &&
-                    <label 
-                        htmlFor="booking-modal" 
-                        onClick={() => {setProductData(product)}} 
-                        className="cursor-pointer flex text-xs border px-3 my-auto py-2 border-theme-primary group hover:bg-theme-primary rounded-xs transition-all duration-200"
-                    >
-                        <div className="text-xs text-theme-primary font-semibold ml-2
-                            group-hover:text-white delay-100">
-                            Book Now
-                        </div>
-                    </label>
-                }
+                <label 
+                    htmlFor="booking-modal" 
+                    onClick={() => {setProductData(product)}} 
+                    className="cursor-pointer flex text-xs border px-3 my-auto py-2 border-theme-primary group hover:bg-theme-primary rounded-xs transition-all duration-200"
+                >
+                    <div className="text-xs text-theme-primary font-semibold ml-2
+                        group-hover:text-white delay-100">
+                        Book Now
+                    </div>
+                </label>
                 <div className='flex items-center gap-2 text-xl'>
                     <button
                         type="button"

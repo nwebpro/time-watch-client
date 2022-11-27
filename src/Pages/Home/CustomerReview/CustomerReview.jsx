@@ -11,7 +11,7 @@ const CustomerReview = () => {
     return (
         <section className='px-4 md:px-0 py-20 bg-theme-secondary'>
             <div className='container mx-auto'>
-                <h2 className="text-center font-poppins text-theme-text font-bold text-4xl leading-10 mb-[72px]">What thousands of happy customers are saying about us</h2>
+                <h2 className="text-center font-poppins text-theme-text font-bold text-4xl leading-10 mb-10">What thousands of happy customers are saying about us</h2>
                     <Swiper
                         breakpoints={{
                             576: {
