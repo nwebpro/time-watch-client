@@ -46,7 +46,7 @@ const ReportProductModal = ({ reportProduct, setReportProduct }) => {
             <input type="checkbox" id="reportProduct-modal" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box relative">
-                    <label htmlFor="reportProduct-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label htmlFor="reportProduct-modal" className="bg-theme-primary text-white cursor-pointer rounded-full w-8 h-8 flex items-center justify-center text-xl absolute right-2 top-2">✕</label>
                     <form onSubmit={handleReportProduct} className='grid grid-cols-1 gap-3 mt-10'>
                         <p className='text-center text-base text-theme-body'>Write in detail why you want to report this product!</p>
                         <div className='mb-2'>

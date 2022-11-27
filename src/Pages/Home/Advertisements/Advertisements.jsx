@@ -29,7 +29,7 @@ const Advertisements = () => {
                 advertisedList?.length &&
                 <section className='bg-theme-secondary px-4 md:px-0 py-20'>
                     <div className='container mx-auto'>
-                        <h2 className="text-center font-poppins text-theme-text font-bold text-4xl leading-10 mb-[72px]">Advertisement Products</h2>
+                        <h2 className="text-center font-poppins text-theme-text font-bold text-[26px] md:text-4xl leading-10 mb-[72px]">Advertisement Products</h2>
                         {
                             advertisedList?.length >= 4 ?
                             <Swiper

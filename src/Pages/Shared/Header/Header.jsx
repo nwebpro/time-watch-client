@@ -124,7 +124,7 @@ const Header = () => {
                             </svg>
                         </button>
                         {isMenuOpen && (
-                        <div className="absolute top-0 left-0 w-full bg-theme-secondary">
+                        <div className="absolute top-0 left-0 w-full bg-theme-secondary z-50">
                             <div className="p-5 bg-white rounded shadow-sm">
                                 <div className="flex items-center justify-between mb-4">
                                     <div>

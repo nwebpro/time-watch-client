@@ -10,13 +10,13 @@ const Product = ({ product, setProductData, setReportProduct }) => {
     const { user } = useContext(AuthContext)
     const [ isAdmin ] = useAdmin(user?.email)
     const [ isSeller ] = useSeller(user?.email)
-    const { image, name, userName, location, categoryName, originalPrice, date, resalePrice, yearOfUses, isAdvertise, verify } = product
+    const { image, name, userName, location, categoryName, originalPrice, date, resalePrice, yearOfUses, isAdvertise, verify, quality } = product
     const productAddedTime = formatDistanceToNow(
         new Date(date),
         { includeSeconds: true }
     )
     return (
-        <div className='bg-white p-5 flex flex-col justify-between rounded-sm'>
+        <div className='bg-white p-5 flex flex-col justify-between rounded-sm' data-aos='fade-up' data-aos-duration='1500'>
             <div className='relative mb-5'>
                 <div className='group block overflow-hidden mb-5 cursor-pointer'>
                     <img src={ image } className='h-[300px] w-full object-cover transition-transform duration-500 group-hover:scale-105 z-10' alt="" />
@@ -46,6 +46,7 @@ const Product = ({ product, setProductData, setReportProduct }) => {
                     <p className='text-gray-400 line-through text-xs leading-4 font-medium mb-1'>৳ { originalPrice }</p>
                 </div>
                 <p className='capitalize text-gray-400 text-[13px]'>Uses: { yearOfUses }</p>
+                <p className='capitalize text-gray-400 text-[13px]'>Quality: { quality }</p>
             </div>
             <div className='flex justify-between items-center'>
                 {

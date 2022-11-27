@@ -57,8 +57,8 @@ const MyOrder = () => {
                 <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                     <div className="inline-block min-w-full rounded-lg overflow-hidden">
                         {
-                            allOrders.length ?
-                            <table className="min-w-full leading-normal">
+                            allOrders?.length ?
+                            <table className="min-w-full leading-normal" data-aos='fade-up' data-aos-duration='1500'>
                                 <thead>
                                     <tr>
                                         <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"> Image </th>

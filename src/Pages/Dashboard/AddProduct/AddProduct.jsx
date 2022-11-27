@@ -82,7 +82,7 @@ const AddProduct = () => {
     }
 
     return (
-        <section className='max-w-3xl mx-auto bg-white px-8 py-10 rounded-lg'>
+        <section className='max-w-3xl mx-auto bg-white px-8 py-10 rounded-lg' data-aos='fade-up' data-aos-duration='1500'>
             <form onSubmit={ handleSubmit(handleAddProduct) }>
                 <div className="mb-6">
                     <label  className="block text-sm font-medium text-theme-text mb-1">Product Name</label>

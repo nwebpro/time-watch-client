@@ -5,8 +5,8 @@ const ContactUs = () => {
     useSetTitle('Contact Us')
     return (
         <div className="py-4">
-            <div className="container mx-auto flex flex-col md:flex-row my-12 md:my-36">
-                <div className="flex flex-col w-full lg:w-2/5 p-8">
+            <div className="container mx-auto flex flex-col md:flex-row my-12 md:my-36 overflow-hidden">
+                <div className="flex flex-col w-full lg:w-2/5 p-8" data-aos='fade-right' data-aos-duration='1000'>
                     <p className="text-3xl md:text-5xl text-theme-primary my-4 leading-relaxed md:leading-snug">Contact our team</p>
                     <p className="font-sans text-sm md:text-lg my-2 md:my-4"><svg className="inline-block fill-current mr-2"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -27,7 +27,7 @@ const ContactUs = () => {
                     live chat with our team.
                     </p>
                 </div>
-                <div className=" flex flex-col lg:w-3/5 justify-center w-full lg:-mt-12">
+                <div className=" flex flex-col lg:w-3/5 justify-center w-full lg:-mt-12" data-aos='fade-left' data-aos-duration='1000'>
                     <div className="container">
                     <div className="relative flex flex-col min-w-0 break-words w-full">
                         <div className="flex-auto p-5 lg:p-10">

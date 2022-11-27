@@ -5,32 +5,32 @@ const Blog = () => {
     useSetTitle('Blog')
     return (
         <div className='bg-theme-secondary'>
-            <div class="container mx-auto space-y-4 py-20 px-4 md:px-0">
-                <details class="group border-l-4 border-theme-primary bg-gray-50 p-6" open>
-                    <summary class="flex cursor-pointer items-center justify-between">
-                        <h2 class="text-lg font-medium text-gray-900">
+            <div className="container mx-auto space-y-4 py-20 px-4 md:px-0">
+                <details className="group border-l-4 border-theme-primary bg-gray-50 p-6" open >
+                    <summary className="flex cursor-pointer items-center justify-between">
+                        <h2 className="text-lg font-medium text-gray-900">
                             What are the different ways to manage a state in a React application?
                         </h2>
 
                         <span
-                            class="ml-1.5 flex-shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3"
+                            className="ml-1.5 flex-shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3"
                         >
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5 flex-shrink-0 transition duration-300 group-open:-rotate-45"
+                            className="h-5 w-5 flex-shrink-0 transition duration-300 group-open:-rotate-45"
                             viewBox="0 0 20 20"
                             fill="currentColor"
                             >
                             <path
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                                clip-rule="evenodd"
+                                clipRule="evenodd"
                             />
                             </svg>
                         </span>
                     </summary>
 
-                    <p class="mt-4 leading-relaxed text-gray-700 mb-3">
+                    <p className="mt-4 leading-relaxed text-gray-700 mb-3">
                         In React apps, there are at least seven ways to handle the state. Let us briefly explore a few of them in this part.
                     </p>
                     <p>We can use URL to store some data e.g.</p>
@@ -59,60 +59,60 @@ const Blog = () => {
                     </div>
                 </details>
 
-                <details class="group border-l-4 border-theme-primary bg-gray-50 p-6">
-                    <summary class="flex cursor-pointer items-center justify-between">
-                        <h2 class="text-lg font-medium text-gray-900">
+                <details className="group border-l-4 border-theme-primary bg-gray-50 p-6">
+                    <summary className="flex cursor-pointer items-center justify-between">
+                        <h2 className="text-lg font-medium text-gray-900">
                             How does prototypical inheritance work?
                         </h2>
 
                         <span
-                            class="ml-1.5 flex-shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3"
+                            className="ml-1.5 flex-shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3"
                         >
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5 flex-shrink-0 transition duration-300 group-open:-rotate-45"
+                            className="h-5 w-5 flex-shrink-0 transition duration-300 group-open:-rotate-45"
                             viewBox="0 0 20 20"
                             fill="currentColor"
                             >
                             <path
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                                clip-rule="evenodd"
+                                clipRule="evenodd"
                             />
                             </svg>
                         </span>
                     </summary>
 
-                    <p class="mt-4 leading-relaxed text-gray-700 mb-4">
+                    <p className="mt-4 leading-relaxed text-gray-700 mb-4">
                         Every object with its methods and properties contains an internal and hidden property known as [[Prototype]]. The Prototypal Inheritance is a feature in javascript used to add methods and properties in objects. It is a method by which an object can inherit the properties and methods of another object. Traditionally, in order to get and set the [[Prototype]] of an object, we use Object.getPrototypeOf and Object.setPrototypeOf. Nowadays, in modern language, it is being set using __proto__
                     </p>
                     <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200520193336/Untitled-Diagram108.png" alt="" />
                 </details>
-                <details class="group border-l-4 border-theme-primary bg-gray-50 p-6">
-                    <summary class="flex cursor-pointer items-center justify-between">
-                        <h2 class="text-lg font-medium text-gray-900">
+                <details className="group border-l-4 border-theme-primary bg-gray-50 p-6">
+                    <summary className="flex cursor-pointer items-center justify-between">
+                        <h2 className="text-lg font-medium text-gray-900">
                             What is a unit test? Why should we write unit tests?
                         </h2>
 
                         <span
-                            class="ml-1.5 flex-shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3"
+                            className="ml-1.5 flex-shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3"
                         >
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5 flex-shrink-0 transition duration-300 group-open:-rotate-45"
+                            className="h-5 w-5 flex-shrink-0 transition duration-300 group-open:-rotate-45"
                             viewBox="0 0 20 20"
                             fill="currentColor"
                             >
                             <path
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                                clip-rule="evenodd"
+                                clipRule="evenodd"
                             />
                             </svg>
                         </span>
                     </summary>
 
-                    <p class="mt-4 leading-relaxed text-gray-700 mb-4">
+                    <p className="mt-4 leading-relaxed text-gray-700 mb-4">
                     <span className='font-bold'>What is Unit Testing?</span> Unit testing, a testing technique using which individual modules are tested to determine if there are any issues by the developer himself. It is concerned with functional correctness of the standalone modules. The main aim is to isolate each unit of the system to identify, analyze and fix the defects.
                     </p>
                     <p>Unit testing is a powerful tool for software quality -- and has been for decades. Unit tests provide a fundamental check that an application meets its software design specifications and behaves as intended.</p>
@@ -124,33 +124,33 @@ const Blog = () => {
                         <li>improve deployment velocity.</li>
                     </ul>
                 </details>
-                <details class="group border-l-4 border-theme-primary bg-gray-50 p-6">
-                    <summary class="flex cursor-pointer items-center justify-between">
-                        <h2 class="text-lg font-medium text-gray-900">
+                <details className="group border-l-4 border-theme-primary bg-gray-50 p-6">
+                    <summary className="flex cursor-pointer items-center justify-between">
+                        <h2 className="text-lg font-medium text-gray-900">
                             React vs. Angular vs. Vue?
                         </h2>
 
                         <span
-                            class="ml-1.5 flex-shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3"
+                            className="ml-1.5 flex-shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3"
                         >
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5 flex-shrink-0 transition duration-300 group-open:-rotate-45"
+                            className="h-5 w-5 flex-shrink-0 transition duration-300 group-open:-rotate-45"
                             viewBox="0 0 20 20"
                             fill="currentColor"
                             >
                             <path
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                                clip-rule="evenodd"
+                                clipRule="evenodd"
                             />
                             </svg>
                         </span>
                     </summary>
 
-                    <p class="mt-4 leading-relaxed text-gray-700 mb-4"><span className='font-bold'>Angular</span> -  has a steep learning curve, considering it is a complete solution, and mastering Angular requires you to learn associated concepts like TypeScript and MVC. Even though it takes time to learn Angular, the investment pays dividends in terms of understanding how the front end works.</p>
-                    <p class="mt-4 leading-relaxed text-gray-700 mb-4"><span className='font-bold'>React</span> - offers a Getting Started guide that should help one set up React in about an hour. The documentation is thorough and complete, with solutions to common issues already present on Stack Overflow. React is not a complete framework and advanced features require the use of third-party libraries. This makes the learning curve of the core framework not so steep but depends on the path you take with additional functionality. However, learning to use React does not necessarily mean that you are using the best practices.</p>
-                    <p class="mt-4 leading-relaxed text-gray-700 mb-4"><span className='font-bold'>Vue</span>Vue - provides higher customizability and hence is easier to learn than Angular or React. Further, Vue has an overlap with Angular and React with respect to their functionality like the use of components. Hence, the transition to Vue from either of the two is an easy option. However, simplicity and flexibility of Vue is a double-edged sword — it allows poor code, making it difficult to debug and test.</p>
+                    <p className="mt-4 leading-relaxed text-gray-700 mb-4"><span className='font-bold'>Angular</span> -  has a steep learning curve, considering it is a complete solution, and mastering Angular requires you to learn associated concepts like TypeScript and MVC. Even though it takes time to learn Angular, the investment pays dividends in terms of understanding how the front end works.</p>
+                    <p className="mt-4 leading-relaxed text-gray-700 mb-4"><span className='font-bold'>React</span> - offers a Getting Started guide that should help one set up React in about an hour. The documentation is thorough and complete, with solutions to common issues already present on Stack Overflow. React is not a complete framework and advanced features require the use of third-party libraries. This makes the learning curve of the core framework not so steep but depends on the path you take with additional functionality. However, learning to use React does not necessarily mean that you are using the best practices.</p>
+                    <p className="mt-4 leading-relaxed text-gray-700 mb-4"><span className='font-bold'>Vue</span>Vue - provides higher customizability and hence is easier to learn than Angular or React. Further, Vue has an overlap with Angular and React with respect to their functionality like the use of components. Hence, the transition to Vue from either of the two is an easy option. However, simplicity and flexibility of Vue is a double-edged sword — it allows poor code, making it difficult to debug and test.</p>
                 </details>
             </div>
         </div>
