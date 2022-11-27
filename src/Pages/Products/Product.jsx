@@ -4,11 +4,17 @@ import { MdVerified, MdLocationPin, MdOutlineReport } from 'react-icons/md'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useAdmin from '../../Hooks/useAdmin';
 import useSeller from '../../Hooks/useSeller';
+import { format, formatDistanceToNow } from 'date-fns'
+
 const Product = ({ product, setProductData, setReportProduct }) => {
     const { user } = useContext(AuthContext)
     const [ isAdmin ] = useAdmin(user?.email)
     const [ isSeller ] = useSeller(user?.email)
-    const { image, name, userName, location, categoryName, originalPrice, resalePrice, yearOfUses, isAdvertise, verify } = product
+    const { image, name, userName, location, categoryName, originalPrice, date, resalePrice, yearOfUses, isAdvertise, verify } = product
+    const productAddedTime = formatDistanceToNow(
+        new Date(date),
+        { includeSeconds: true }
+    )
     return (
         <div className='bg-white p-5 flex flex-col justify-between rounded-sm'>
             <div className='relative mb-5'>
@@ -18,10 +24,15 @@ const Product = ({ product, setProductData, setReportProduct }) => {
                 </div>
                 <h3 className='text-theme-text font-poppins font-semibold text-lg leading-6 mb-1'>{ name }</h3>
                 <div className='flex justify-between items-center'>
-                    <div className='text-sm hover:underline text-gray-400 flex items-center gap-[2px]'>
-                        { userName }
-                        <div className="tooltip" data-tip={`${verify ? 'Verified' : 'Unverified'}`}>
-                            <MdVerified className={`${verify ? 'text-[#3F8DF3]' : 'text-gray-400'}`} />
+                    <div className='flex gap-1'>
+                        <div className='text-sm hover:underline text-gray-400 flex items-center gap-[2px]'>
+                            { userName }
+                            <div className="tooltip" data-tip={`${verify ? 'Verified' : 'Unverified'}`}>
+                                <MdVerified className={`${verify ? 'text-[#3F8DF3]' : 'text-gray-400'}`} />
+                            </div>
+                        </div>
+                        <div className="tooltip tooltip-bottom" data-tip={format(new Date(date), 'PPPPp')}>
+                            <span className='text-sm text-gray-400 cursor-pointer hover:underline'>{ productAddedTime }</span>
                         </div>
                     </div>
                     <div className='text-sm text-theme-body flex items-center gap-[2px]'>

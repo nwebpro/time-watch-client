@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
-import { format } from 'date-fns'
+import { format, formatDistanceToNow } from 'date-fns'
 import useSetTitle from '../../../Hooks/useSetTitle';
 import { toast } from 'react-toastify';
 import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
@@ -104,7 +104,7 @@ const MyProduct = () => {
                                                     <p className="text-gray-900 whitespace-no-wrap">Original: ৳ { product.originalPrice }</p>
                                                 </td>
                                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p className="text-gray-900 whitespace-no-wrap">{ format(new Date(product.date), 'PP') }</p>
+                                                    <p className="text-gray-900 whitespace-no-wrap tooltip" data-tip={format(new Date(product.date), 'PPPPp')}>{ formatDistanceToNow(new Date(product.date), { includeSeconds: true }) }</p>
                                                 </td>
                                                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-center">
                                                     {

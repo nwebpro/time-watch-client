@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, NavLink, Outlet, ScrollRestoration, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
-import { MdDashboard } from 'react-icons/md'
+import { MdDashboard, MdVerified } from 'react-icons/md'
 import { AiFillHome } from 'react-icons/ai'
 import { FiFile } from 'react-icons/fi'
 import { FiLogOut } from 'react-icons/fi'
@@ -46,10 +46,6 @@ const DashboardLayout = () => {
                         <div className={`flex flex-col items-center mt-6 border-b border-theme-body pb-5 duration-300`}>
                             <img className="object-cover w-16 h-16 mx-2 rounded-full" src={ user?.photoURL } alt="avatar" />
                             <h4 className="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200 flex gap-1 items-center">{ user?.displayName }
-                            {/* <div className="tooltip" data-tip="Unverified">
-                                <MdVerified className='text-gray-400' />
-                            </div> */}
-                            {/* <UserVerified /> */}
                             </h4>
                             <p className="mx-2 mt-1 text-sm font-medium text-gray-400">{ user?.email }</p>
                         </div>
