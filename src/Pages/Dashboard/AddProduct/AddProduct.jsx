@@ -99,7 +99,7 @@ const AddProduct = () => {
                         <label  className="block text-sm font-medium text-theme-text mb-1">Product Category</label>
                         <select className="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-theme-2nd focus-visible:shadow-none" {...register("catName", {required: true})} >
                             {
-                                allCategory.map(category => (
+                                allCategory?.map(category => (
                                     <option key={category._id} value={ category._id }>{ category.name }</option>
                                 ))
                             }
