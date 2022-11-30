@@ -7,7 +7,7 @@
 
 ## [Live Demo](https://time-3bc33.web.app/).
 
-## [Time Watch Server Side](https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-nwebpro).
+## [Time Watch Server Side](https://github.com/nwebpro/time-watch-server).
 
 
 # About the Project
